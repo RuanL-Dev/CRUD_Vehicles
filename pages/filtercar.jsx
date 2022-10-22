@@ -44,13 +44,13 @@ export default function AddingCar() {
           </StyledArrow>
           <FormContainer>
             <Form>
-              <Input label="Marca" />
-              <Input label="Cor" />
-              <Input label="Ano" />
+              <Input label="Marca" name="tradeMark" />
+              <Input label="Cor" name="tradeMarkColour" />
+              <Input label="Ano" name="tradeMarkYear" />
             </Form>
             <PriceForm>
-              <Input label="Preço mín." />
-              <Input label="Preço máx." />
+              <Input label="Preço mín." name="LowestPrice" />
+              <Input label="Preço máx." name="HighestPrice" />
             </PriceForm>
             <SavingButtonContainer>
               <ButtonSave>SALVAR</ButtonSave>
