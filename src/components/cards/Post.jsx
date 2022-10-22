@@ -7,6 +7,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   box-sizing: border-box;
   width: 90%;
+  margin-bottom: 3vh;
 `
 
 const MyFavorites = styled.div`
