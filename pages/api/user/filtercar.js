@@ -9,16 +9,21 @@ import { filterCarUser } from '../../../modules/user/filtercar.service'
 const postSchema = Joi.object({
   tradeMark: Joi.string().required().max(20),
   tradeMarkColour: Joi.string().required().max(20),
-  tradeMarkYear: Joi.string().required().max(5),
+  tradeMarkYear: Joi.string().required().max(4),
   LowestPrice: Joi.string().required().max(10).min(4),
   HighestPrice: Joi.string().required().max(20).min(4)
 })
 
 const carFilter = createHandler()
 
-carFilter.post(validate({ body: postSchema }), (req, res) => {
-  filterCarUser(req, res)
-  res.status(200).json({ teste: 'entrou no FilterCar, ne' })
+carFilter.post(validate({ body: postSchema }), async (req, res) => {
+  try {
+    const carFilter = await filterCarUser(req, res)
+    res.status(200).json(carFilter)
+  } catch (err) {
+    console.error(err)
+    throw err
+  }
 })
 
 export default carFilter
