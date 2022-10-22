@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 import Body from '../src/components/layout/body/Body'
-import Container from '../src/components/layout/container/Container'
+import ContainerPage from '../src/components/layout/container/ContainerPage'
 import Input from '../src/components/input/Input'
-import SavingButton from '../src/components/button/SavingButton'
-import IconImages from '../src/components/iconImages/IconImages'
+import ButtonSave from '../src/components/button/ButtonSave'
+import IconImages from '../src/components/iconImage/IconImages'
 
 const FormContainer = styled.div`
   background-color: ${(props) => props.theme.secondBackgroundColor};
@@ -32,7 +32,7 @@ export default function AddingCar() {
   return (
     <>
       <Body>
-        <Container>
+        <ContainerPage>
           <StyledArrow>
             <IconImages imageName="ArrowIcon" type="svg" />
           </StyledArrow>
@@ -45,10 +45,10 @@ export default function AddingCar() {
               <Input label="Placa" />
             </Form>
             <SavingButtonContainer>
-              <SavingButton>SALVAR</SavingButton>
+              <ButtonSave>SALVAR</ButtonSave>
             </SavingButtonContainer>
           </FormContainer>
-        </Container>
+        </ContainerPage>
       </Body>
     </>
   )
