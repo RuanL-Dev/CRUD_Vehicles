@@ -1,8 +1,9 @@
 const theme = {
   primary: '#81DECF',
-  secondary: '#CBF0EA',
+  secondary: 'rgba(101, 220, 199, 0.3)',
   background: '#FFFFFF',
-  secondBackgroundColor: '#d1d1d1'
+  secondBackgroundColor: '#ECECEC',
+  buttonColor: 'rgba(101, 220, 199, 0.8)'
 }
 
 export default theme
