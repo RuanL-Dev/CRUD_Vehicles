@@ -38,11 +38,11 @@ export default function NewCar() {
           </StyledIconArrow>
           <FormContainer>
             <Form>
-              <Input label="Nome" />
-              <Input label="Marca" />
-              <Input label="Cor" />
-              <Input label="Ano" />
-              <Input label="Placa" />
+              <Input label="Nome" name="carModel" />
+              <Input label="Marca" name="carBrand" />
+              <Input label="Cor" name="carColor" />
+              <Input label="Ano" name="carYear" />
+              <Input label="Placa" name="carBoard" />
             </Form>
             <ContainerButtonSave>
               <ButtonSave>SALVAR</ButtonSave>
