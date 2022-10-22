@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 import Body from '../src/components/layout/body/Body'
-import ContainerPage from '../src/components/layout/container/ContainerPage'
+import Container from '../src/components/layout/container/Container'
 import Input from '../src/components/input/Input'
-import ButtonSave from '../src/components/button/ButtonSave'
-import IconImages from '../src/components/iconImage/IconImages'
+import SavingButton from '../src/components/button/SavingButton'
+import IconImages from '../src/components/iconImages/IconImages'
 
 const FormContainer = styled.div`
   background-color: ${(props) => props.theme.secondBackgroundColor};
@@ -12,12 +12,12 @@ const FormContainer = styled.div`
   margin-bottom: 10vh;
 `
 
-const StyledIconArrow = styled.div`
+const StyledArrow = styled.div`
   margin: 50px 750px 0px 0px;
   cursor: pointer;
 `
 
-const ContainerButtonSave = styled.div`
+const SavingButtonContainer = styled.div`
   padding-left: 240px;
   margin-top: 50px;
 `
@@ -28,14 +28,14 @@ const Form = styled.form`
   gap: 20px;
 `
 
-export default function NewCar() {
+export default function AddingCar() {
   return (
     <>
       <Body>
-        <ContainerPage>
-          <StyledIconArrow>
+        <Container>
+          <StyledArrow>
             <IconImages imageName="ArrowIcon" type="svg" />
-          </StyledIconArrow>
+          </StyledArrow>
           <FormContainer>
             <Form>
               <Input label="Nome" />
@@ -44,11 +44,11 @@ export default function NewCar() {
               <Input label="Ano" />
               <Input label="Placa" />
             </Form>
-            <ContainerButtonSave>
-              <ButtonSave>SALVAR</ButtonSave>
-            </ContainerButtonSave>
+            <SavingButtonContainer>
+              <SavingButton>SALVAR</SavingButton>
+            </SavingButtonContainer>
           </FormContainer>
-        </ContainerPage>
+        </Container>
       </Body>
     </>
   )
