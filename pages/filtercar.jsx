@@ -44,9 +44,9 @@ export default function AddingCar() {
           </StyledArrow>
           <FormContainer>
             <Form>
-              <Input label="Marca" name="tradeMark" />
-              <Input label="Cor" name="tradeMarkColour" />
-              <Input label="Ano" name="tradeMarkYear" />
+              <Input label="Marca" name="carBrand" />
+              <Input label="Cor" name="carColour" />
+              <Input label="Ano" name="carYear" />
             </Form>
             <PriceForm>
               <Input label="Preço mín." name="LowestPrice" />

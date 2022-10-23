@@ -7,18 +7,18 @@ import validate from '../../../lib/middlewares/validation'
 import { filterCarUser } from '../../../modules/user/filtercar.service'
 
 const postSchema = Joi.object({
-  tradeMark: Joi.string().required().max(20),
-  tradeMarkColour: Joi.string().required().max(20),
-  tradeMarkYear: Joi.string().required().max(4),
-  LowestPrice: Joi.string().required().max(10).min(4),
-  HighestPrice: Joi.string().required().max(20).min(4)
+  carBrand: Joi.string().required().max(20),
+  carColour: Joi.string().required().max(20),
+  carYear: Joi.string().required().max(4),
+  LowestPrice: Joi.string().required().max(12).min(4),
+  HighestPrice: Joi.string().required().max(20)
 })
 
 const carFilter = createHandler()
 
 carFilter.post(validate({ body: postSchema }), async (req, res) => {
   try {
-    const carFilter = await filterCarUser(req, res)
+    const carFilter = await filterCarUser(req.body)
     res.status(200).json(carFilter)
   } catch (err) {
     console.error(err)
