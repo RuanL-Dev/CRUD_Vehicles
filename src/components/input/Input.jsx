@@ -18,14 +18,33 @@ const StyledInput = styled.input`
   background-color: ${(props) => props.theme.background};
   padding: 15px 20px;
   box-sizing: border-box;
+
+  ${(props) => props.error && `border: 2px solid ${props.theme.error};`}
+
+  &:focus {
+    outline: none;
+  }
 `
 
+const ErrorLabel = styled.span`
+  color: ${(props) => props.theme.error};
+  font-weight: bold;
+  font-size: 14px;
+`
+
+const errorMessage = {
+  'string.empty': 'Obrigatório o preenchimento desse campo',
+  'string.max': 'Este campo só permite o formato YYYY',
+  'string.min': 'Este campo só permite o formato YYYY'
+}
+
 // eslint-disable-next-line react/display-name
-const Input = forwardRef(({ label, ...props }, ref) => {
+const Input = forwardRef(({ label, error, ...props }, ref) => {
   return (
     <InputContainer>
       <StyledLabel>{label}</StyledLabel>
-      <StyledInput {...props} ref={ref} />
+      <StyledInput {...props} error={error} ref={ref} />
+      {error && <ErrorLabel>{errorMessage[error.type] || error.message}</ErrorLabel>}
     </InputContainer>
   )
 })

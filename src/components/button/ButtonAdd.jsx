@@ -8,6 +8,11 @@ const StyledButtonAdd = styled.button`
   border: 0;
   font-size: 30px;
   cursor: pointer;
+  transition: 0.3s;
+
+  :hover {
+    background-color: ${(props) => props.theme.buttonHover};
+  }
 `
 
 const ButtonAdd = ({ children, loading, disabled, ...props }) => {

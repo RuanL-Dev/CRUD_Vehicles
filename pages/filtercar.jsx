@@ -1,6 +1,4 @@
-import { useState } from 'react'
 import styled from 'styled-components'
-import Link from "next/link"
 import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 
@@ -41,14 +39,17 @@ const PriceForm = styled.div`
 `
 
 export default function FilterCar() {
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
     resolver: joiResolver(filterSchema)
   })
 
   const handleForm = (data) => {
     console.log(data)
   }
-  console.log(errors)
   return (
     <>
       <Body>
@@ -63,18 +64,21 @@ export default function FilterCar() {
                 placeholder="Digite a marca do carro"
                 name="carBrand"
                 {...register('carBrand')}
+                error={errors.carBrand}
               />
               <Input
                 label="Cor"
                 placeholder="Digite a cor do carro"
                 name="carColour"
                 {...register('carColour')}
+                error={errors.carColour}
               />
               <Input
                 label="Ano"
                 placeholder="Digite o ano no formato (YYYY)"
                 name="carYear"
                 {...register('carYear')}
+                error={errors.carYear}
               />
               <PriceForm>
                 <Input
@@ -82,16 +86,20 @@ export default function FilterCar() {
                   placeholder="(R$)"
                   name="LowestPrice"
                   {...register('LowestPrice')}
+                  error={errors.LowestPrice}
                 />
                 <Input
                   label="Preço máx."
                   placeholder="(R$)"
                   name="HighestPrice"
                   {...register('HighestPrice')}
+                  error={errors.HighestPrice}
                 />
               </PriceForm>
               <SavingButtonContainer>
-                <ButtonSave type="submit">SALVAR</ButtonSave>
+                <ButtonSave type="submit" disabled={Object.keys(errors).lenght > 0}>
+                  SALVAR
+                </ButtonSave>
               </SavingButtonContainer>
             </Form>
           </FormContainer>

@@ -9,6 +9,17 @@ const StyledButtonSave = styled.button`
   font-size: 20px;
   line-height: 30px;
   cursor: pointer;
+  transition: 0.3s;
+
+  :hover {
+    background-color: ${(props) => props.theme.buttonHover};
+  }
+
+  :disabled {
+    background-color: grey;
+  }
+
+  ${(props) => !props.disabled && 'cursor: pointer;'}
 `
 
 const ButtonSave = ({ children, loading, disabled, ...props }) => {

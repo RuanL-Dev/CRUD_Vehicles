@@ -1,6 +1,4 @@
-import { useState } from 'react'
 import styled from 'styled-components'
-import Link from "next/link"
 import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 
@@ -35,14 +33,17 @@ const Form = styled.form`
 `
 
 export default function NewCar() {
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
     resolver: joiResolver(newcarSchema)
   })
 
   const handleForm = (data) => {
     console.log(data)
   }
-  console.log(errors)
   return (
     <>
       <Body>
@@ -57,33 +58,40 @@ export default function NewCar() {
                 placeholder="Insira um novo nome"
                 name="carModel"
                 {...register('carModel')}
+                error={errors.carModel}
               />
               <Input
                 label="Marca"
                 placeholder="Digite a marca do carro"
                 name="carBrand"
                 {...register('carBrand')}
+                error={errors.carBrand}
               />
               <Input
                 label="Cor"
                 placeholder="Digite a cor do carro"
                 name="carColor"
                 {...register('carColor')}
+                error={errors.carColor}
               />
               <Input
                 label="Ano"
                 placeholder="Digite o ano no formato (YYYY)"
                 name="carYear"
                 {...register('carYear')}
+                error={errors.carYear}
               />
               <Input
                 label="Placa"
                 placeholder="Digite a placa do carro"
                 name="carPlate"
                 {...register('carPlate')}
+                error={errors.carPlate}
               />
               <ContainerButtonSave>
-                <ButtonSave type="submit">SALVAR</ButtonSave>
+                <ButtonSave type="submit" disabled={Object.keys(errors) > 0}>
+                  SALVAR
+                </ButtonSave>
               </ContainerButtonSave>
             </Form>
           </FormContainer>

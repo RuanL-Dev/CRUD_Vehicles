@@ -10,7 +10,7 @@ function HomePage() {
       <Body>
         <ContainerPage>
           <SearchInput />
-          <Button onClick="OnClick">ADICIONAR</Button>
+          <Button type="submit">ADICIONAR</Button>
           <Post />
         </ContainerPage>
       </Body>
