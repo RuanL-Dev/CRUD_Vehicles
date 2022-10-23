@@ -1,7 +1,7 @@
 import createHandler from '../../../lib/middlewares/nextConnect'
 import validate from '../../../lib/middlewares/validation'
-import { addNewCarUser } from '../../../modules/user/newcar.service'
-import { newcarSchema } from '../../../modules/user/newcar.schema'
+import { addNewCarUser } from '../../../modules/user/newcar/newcar.service'
+import { newcarSchema } from '../modules/user/newcar/newcar.schema'
 
 const addNewCar = createHandler()
 

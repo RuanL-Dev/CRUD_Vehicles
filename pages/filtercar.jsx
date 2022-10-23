@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 
-import { filterSchema } from '../modules/user/filter.schema'
+import { filterSchema } from '../modules/user/filter/filter.schema'
 
 import Body from '../src/components/layout/body/Body'
 import ContainerPage from '../src/components/layout/container/ContainerPage'
@@ -58,9 +58,24 @@ export default function FilterCar() {
           </StyledArrow>
           <FormContainer>
             <Form onSubmit={handleSubmit(handleForm)}>
-              <Input label="Marca" name="carBrand" {...register('carBrand')} />
-              <Input label="Cor" name="carColour" {...register('carColour')} />
-              <Input label="Ano" placeholder="(YYYY)" name="carYear" {...register('carYear')} />
+              <Input
+                label="Marca"
+                placeholder="Digite a marca do carro"
+                name="carBrand"
+                {...register('carBrand')}
+              />
+              <Input
+                label="Cor"
+                placeholder="Digite a cor do carro"
+                name="carColour"
+                {...register('carColour')}
+              />
+              <Input
+                label="Ano"
+                placeholder="Digite o ano no formato (YYYY)"
+                name="carYear"
+                {...register('carYear')}
+              />
               <PriceForm>
                 <Input
                   label="Preço mín."
