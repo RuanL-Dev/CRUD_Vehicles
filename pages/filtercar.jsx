@@ -46,7 +46,6 @@ export default function FilterCar() {
   } = useForm({
     resolver: joiResolver(filterSchema)
   })
-
   const handleForm = (data) => {
     console.log(data)
   }
@@ -97,7 +96,7 @@ export default function FilterCar() {
                 />
               </PriceForm>
               <SavingButtonContainer>
-                <ButtonSave type="submit" disabled={Object.keys(errors).lenght > 0}>
+                <ButtonSave type="submit" disabled={Object.keys(errors).length > 0}>
                   SALVAR
                 </ButtonSave>
               </SavingButtonContainer>

@@ -89,7 +89,7 @@ export default function NewCar() {
                 error={errors.carPlate}
               />
               <ContainerButtonSave>
-                <ButtonSave type="submit" disabled={Object.keys(errors) > 0}>
+                <ButtonSave type="submit" disabled={Object.keys(errors).length > 0}>
                   SALVAR
                 </ButtonSave>
               </ContainerButtonSave>

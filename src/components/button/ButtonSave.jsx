@@ -19,7 +19,7 @@ const StyledButtonSave = styled.button`
     background-color: grey;
   }
 
-  ${(props) => !props.disabled && 'cursor: pointer;'}
+  ${(props) => !props.disabled && 'cursor: pointer;'};
 `
 
 const ButtonSave = ({ children, loading, disabled, ...props }) => {
