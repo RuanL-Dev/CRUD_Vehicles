@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import styled from 'styled-components'
 
 const InputContainer = styled.div`
@@ -19,11 +20,14 @@ const StyledInput = styled.input`
   box-sizing: border-box;
 `
 
-export default function Input({ label }) {
+// eslint-disable-next-line react/display-name
+const Input = forwardRef(({ label, ...props }, ref) => {
   return (
     <InputContainer>
       <StyledLabel>{label}</StyledLabel>
-      <StyledInput />
+      <StyledInput {...props} ref={ref} />
     </InputContainer>
   )
-}
+})
+
+export default Input
