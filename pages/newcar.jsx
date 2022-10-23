@@ -43,10 +43,10 @@ export default function NewCar() {
               <Input label="Cor" name="carColor" />
               <Input label="Ano" name="carYear" />
               <Input label="Placa" name="carBoard" />
+              <ContainerButtonSave>
+                <ButtonSave>SALVAR</ButtonSave>
+              </ContainerButtonSave>
             </Form>
-            <ContainerButtonSave>
-              <ButtonSave>SALVAR</ButtonSave>
-            </ContainerButtonSave>
           </FormContainer>
         </ContainerPage>
       </Body>

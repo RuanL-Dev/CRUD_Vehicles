@@ -28,7 +28,7 @@ const Form = styled.form`
   gap: 20px;
 `
 
-const PriceForm = styled.form`
+const PriceForm = styled.div`
   display: flex;
   gap: 20px;
   margin-top: 20px;
@@ -47,14 +47,14 @@ export default function AddingCar() {
               <Input label="Marca" name="carBrand" />
               <Input label="Cor" name="carColour" />
               <Input label="Ano" name="carYear" />
+              <PriceForm>
+                <Input label="Preço mín." name="LowestPrice" />
+                <Input label="Preço máx." name="HighestPrice" />
+              </PriceForm>
+              <SavingButtonContainer>
+                <ButtonSave>SALVAR</ButtonSave>
+              </SavingButtonContainer>
             </Form>
-            <PriceForm>
-              <Input label="Preço mín." name="LowestPrice" />
-              <Input label="Preço máx." name="HighestPrice" />
-            </PriceForm>
-            <SavingButtonContainer>
-              <ButtonSave>SALVAR</ButtonSave>
-            </SavingButtonContainer>
           </FormContainer>
         </ContainerPage>
       </Body>

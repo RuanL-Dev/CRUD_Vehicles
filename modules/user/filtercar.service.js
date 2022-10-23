@@ -10,3 +10,7 @@ export const filterCarUser = async (body) => {
     throw err
   }
 }
+
+export const getCars = async (limit = 10) => {
+  return await FilterCar.find()
+}
