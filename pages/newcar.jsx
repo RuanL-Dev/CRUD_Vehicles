@@ -1,4 +1,10 @@
+import { useState } from 'react'
 import styled from 'styled-components'
+import Link from "next/link"
+import { useForm } from 'react-hook-form'
+import { joiResolver } from '@hookform/resolvers/joi'
+
+import { newcarSchema } from '../modules/user/newcar.schema'
 
 import Body from '../src/components/layout/body/Body'
 import ContainerPage from '../src/components/layout/container/ContainerPage'
@@ -29,6 +35,14 @@ const Form = styled.form`
 `
 
 export default function NewCar() {
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: joiResolver(newcarSchema)
+  })
+
+  const handleForm = (data) => {
+    console.log(data)
+  }
+  console.log(errors)
   return (
     <>
       <Body>
@@ -37,14 +51,14 @@ export default function NewCar() {
             <IconImages imageName="ArrowIcon" type="svg" />
           </StyledIconArrow>
           <FormContainer>
-            <Form>
-              <Input label="Nome" name="carModel" />
-              <Input label="Marca" name="carBrand" />
-              <Input label="Cor" name="carColor" />
-              <Input label="Ano" name="carYear" />
-              <Input label="Placa" name="carBoard" />
+            <Form onSubmit={handleSubmit(handleForm)}>
+              <Input label="Nome" name="carModel" {...register('carModel')} />
+              <Input label="Marca" name="carBrand" {...register('carBrand')} />
+              <Input label="Cor" name="carColor" {...register('carColor')} />
+              <Input label="Ano" placeholder="(YYYY)" name="carYear" {...register('carYear')} />
+              <Input label="Placa" name="carPlate" {...register('carPlate')} />
               <ContainerButtonSave>
-                <ButtonSave>SALVAR</ButtonSave>
+                <ButtonSave type="submit">SALVAR</ButtonSave>
               </ContainerButtonSave>
             </Form>
           </FormContainer>

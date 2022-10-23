@@ -1,4 +1,10 @@
+import { useState } from 'react'
 import styled from 'styled-components'
+import Link from "next/link"
+import { useForm } from 'react-hook-form'
+import { joiResolver } from '@hookform/resolvers/joi'
+
+import { filterSchema } from '../modules/user/filter.schema'
 
 import Body from '../src/components/layout/body/Body'
 import ContainerPage from '../src/components/layout/container/ContainerPage'
@@ -34,7 +40,15 @@ const PriceForm = styled.div`
   margin-top: 20px;
 `
 
-export default function AddingCar() {
+export default function FilterCar() {
+  const { register, handleSubmit, formState: { errors } } = useForm({
+    resolver: joiResolver(filterSchema)
+  })
+
+  const handleForm = (data) => {
+    console.log(data)
+  }
+  console.log(errors)
   return (
     <>
       <Body>
@@ -43,16 +57,26 @@ export default function AddingCar() {
             <IconImages imageName="ArrowIcon" type="svg" />
           </StyledArrow>
           <FormContainer>
-            <Form>
-              <Input label="Marca" name="carBrand" />
-              <Input label="Cor" name="carColour" />
-              <Input label="Ano" name="carYear" />
+            <Form onSubmit={handleSubmit(handleForm)}>
+              <Input label="Marca" name="carBrand" {...register('carBrand')} />
+              <Input label="Cor" name="carColour" {...register('carColour')} />
+              <Input label="Ano" placeholder="(YYYY)" name="carYear" {...register('carYear')} />
               <PriceForm>
-                <Input label="Preço mín." name="LowestPrice" />
-                <Input label="Preço máx." name="HighestPrice" />
+                <Input
+                  label="Preço mín."
+                  placeholder="(R$)"
+                  name="LowestPrice"
+                  {...register('LowestPrice')}
+                />
+                <Input
+                  label="Preço máx."
+                  placeholder="(R$)"
+                  name="HighestPrice"
+                  {...register('HighestPrice')}
+                />
               </PriceForm>
               <SavingButtonContainer>
-                <ButtonSave>SALVAR</ButtonSave>
+                <ButtonSave type="submit">SALVAR</ButtonSave>
               </SavingButtonContainer>
             </Form>
           </FormContainer>
