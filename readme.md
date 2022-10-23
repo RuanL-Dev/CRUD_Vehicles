@@ -4,3 +4,9 @@
 4 - Não esquecer de refatorar o TYPOGRAPH - Label dos forms
 5 - React-Icons - npm install react-icons --save
 6 - Perguntar ao Jose por que não funciona colocar Joi.number() no filtercar
+
+
+Para instalar:
+
+
+npm i react-hook-form@7.27.1 @hookform/resolvers@2.8.8
