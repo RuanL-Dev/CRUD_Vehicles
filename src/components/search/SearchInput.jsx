@@ -1,7 +1,8 @@
+import { useRouter } from 'next/router'
+
 import styled from 'styled-components'
 
 import IconImages from '../iconImage/IconImages'
-import { SlMagnifier } from 'react-icons/Sl'
 
 const IconImageContainer = styled.div`
   padding: 132px 0 32px 0;
@@ -22,18 +23,26 @@ const StyledInput = styled.input`
   font-size: 30px;
   color: #000000;
 `
-const StyledFilterImage = styled.div`
+const StyledFilterImage = styled.button`
   cursor: pointer;
+  border: none;
+  background-color: ${(props) => props.theme.background};
 `
 
 const SearchInput = ({ ...props }) => {
+  const router = useRouter()
+  const handleClick = () => {
+    router.push('/filtercar')
+  }
+
   return (
     <>
       <IconImageContainer>
-        <SlMagnifier />
         <StyledInput type="text" placeholder="Buscar" {...props}></StyledInput>
         <StyledFilterImage>
-          <IconImages imageName="FilterIcon" type="svg" />
+          <a onClick={handleClick}>
+            <IconImages imageName="FilterIcon" type="svg" />
+          </a>
         </StyledFilterImage>
       </IconImageContainer>
     </>
