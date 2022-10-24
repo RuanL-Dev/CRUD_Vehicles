@@ -55,7 +55,6 @@ export default function NewCar() {
       if (status === 201) {
         router.push('/')
       }
-      console.log(status)
     } catch (err) {
       console.error(err)
       throw err

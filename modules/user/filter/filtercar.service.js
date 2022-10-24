@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-catch */
-import FilterCar from './filtercar.model'
+import NewCar from '../newcar/newcar.model'
 
 export const filterCarUser = async (body) => {
   try {
@@ -11,6 +11,6 @@ export const filterCarUser = async (body) => {
   }
 }
 
-export const getCars = async (limit = 10) => {
-  return await FilterCar.find()
+export const getCars = async (limit = 6) => {
+  return await NewCar.find().sort({ carYear: -1 }).limit(limit)
 }
