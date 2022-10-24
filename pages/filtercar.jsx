@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
 import { filterSchema } from '../modules/user/filter/filter.schema'
 
@@ -39,6 +41,7 @@ const PriceForm = styled.div`
 `
 
 export default function FilterCar() {
+  const router = useRouter()
   const {
     control,
     handleSubmit,
@@ -46,8 +49,19 @@ export default function FilterCar() {
   } = useForm({
     resolver: joiResolver(filterSchema)
   })
-  const handleForm = (data) => {
-    console.log(data)
+  const handleForm = async (data) => {
+    try {
+      const { status } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/user/carfilter`,
+        data
+      )
+      if (status === 200) {
+        router.push('/')
+      }
+    } catch (err) {
+      console.error(err)
+      throw err
+    }
   }
   return (
     <>

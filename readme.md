@@ -11,3 +11,4 @@ Para instalar:
 
 
 npm i react-hook-form@7.27.1 @hookform/resolvers@2.8.8
+npm i axios@0.26.0

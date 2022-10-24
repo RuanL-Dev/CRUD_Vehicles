@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
 import { newcarSchema } from '../modules/user/newcar/newcar.schema'
 
@@ -33,6 +35,7 @@ const Form = styled.form`
 `
 
 export default function NewCar() {
+  const router = useRouter()
   const {
     control,
     handleSubmit,
@@ -41,8 +44,20 @@ export default function NewCar() {
     resolver: joiResolver(newcarSchema)
   })
 
-  const handleForm = (data) => {
-    console.log(data)
+  const handleForm = async (data) => {
+    try {
+      const { status } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/user/addnewcar`,
+        data
+      )
+      if (status === 201) {
+        router.push('/')
+      }
+      console.log(status)
+    } catch (err) {
+      console.error(err)
+      throw err
+    }
   }
   return (
     <>
