@@ -18,9 +18,11 @@ const FormContainer = styled.div`
   margin-bottom: 10vh;
 `
 
-const StyledIconArrow = styled.div`
+const StyledIconArrow = styled.button`
   margin: 50px 750px 0px 0px;
   cursor: pointer;
+  border: none;
+  background-color: ${(props) => props.theme.background};
 `
 
 const ContainerButtonSave = styled.div`
@@ -59,12 +61,18 @@ export default function NewCar() {
       throw err
     }
   }
+
+  const handleClick = () => {
+    router.push('/')
+  }
   return (
     <>
       <Body>
         <ContainerPage>
           <StyledIconArrow>
-            <IconImages imageName="ArrowIcon" type="svg" />
+            <a onClick={handleClick}>
+              <IconImages imageName="ArrowIcon" type="svg" />
+            </a>
           </StyledIconArrow>
           <FormContainer>
             <Form onSubmit={handleSubmit(handleForm)}>

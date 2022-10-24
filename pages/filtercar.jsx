@@ -18,9 +18,11 @@ const FormContainer = styled.div`
   margin-bottom: 10vh;
 `
 
-const StyledArrow = styled.div`
+const StyledArrow = styled.button`
   margin: 50px 750px 0px 0px;
   cursor: pointer;
+  border: none;
+  background-color: ${(props) => props.theme.background};
 `
 
 const SavingButtonContainer = styled.div`
@@ -63,12 +65,17 @@ export default function FilterCar() {
       throw err
     }
   }
+  const handleClick = () => {
+    router.push('/')
+  }
   return (
     <>
       <Body>
         <ContainerPage>
           <StyledArrow>
-            <IconImages imageName="ArrowIcon" type="svg" />
+            <a onClick={handleClick}>
+              <IconImages imageName="ArrowIcon" type="svg" />
+            </a>
           </StyledArrow>
           <FormContainer>
             <Form onSubmit={handleSubmit(handleForm)}>
