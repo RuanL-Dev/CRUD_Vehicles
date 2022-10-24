@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const InputContainer = styled.div`
   width: 100%;
+  box-sizing: border-box;
 `
 
 const StyledLabel = styled.p`
@@ -13,7 +14,7 @@ const StyledLabel = styled.p`
 
 const StyledInput = styled.input`
   width: 100%;
-  border: 1px solid rgba(239, 239, 239, 0.6);
+  border: 2px solid rgba(239, 239, 239, 0.6);
   border-radius: 100px;
   background-color: ${(props) => props.theme.background};
   padding: 15px 20px;

@@ -8,7 +8,6 @@ const StyledButtonSave = styled.button`
   border: 0;
   font-size: 20px;
   line-height: 30px;
-  cursor: pointer;
   transition: 0.3s;
 
   ${(props) => !props.disabled && 'cursor: pointer;'}
