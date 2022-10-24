@@ -72,10 +72,8 @@ export default function FilterCar() {
     <>
       <Body>
         <ContainerPage>
-          <StyledArrow>
-            <a onClick={handleClick}>
-              <IconImages imageName="ArrowIcon" type="svg" />
-            </a>
+          <StyledArrow onClick={handleClick}>
+            <IconImages imageName="ArrowIcon" type="svg" />
           </StyledArrow>
           <FormContainer>
             <Form onSubmit={handleSubmit(handleForm)}>

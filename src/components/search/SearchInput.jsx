@@ -39,10 +39,8 @@ const SearchInput = ({ ...props }) => {
     <>
       <IconImageContainer>
         <StyledInput type="text" placeholder="Buscar" {...props}></StyledInput>
-        <StyledFilterImage>
-          <a onClick={handleClick}>
-            <IconImages imageName="FilterIcon" type="svg" />
-          </a>
+        <StyledFilterImage onClick={handleClick}>
+          <IconImages imageName="FilterIcon" type="svg" />
         </StyledFilterImage>
       </IconImageContainer>
     </>

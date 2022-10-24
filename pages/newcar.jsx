@@ -69,10 +69,8 @@ export default function NewCar() {
     <>
       <Body>
         <ContainerPage>
-          <StyledIconArrow>
-            <a onClick={handleClick}>
-              <IconImages imageName="ArrowIcon" type="svg" />
-            </a>
+          <StyledIconArrow onClick={handleClick}>
+            <IconImages imageName="ArrowIcon" type="svg" />
           </StyledIconArrow>
           <FormContainer>
             <Form onSubmit={handleSubmit(handleForm)}>
