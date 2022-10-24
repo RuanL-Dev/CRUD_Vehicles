@@ -5,7 +5,6 @@ import { SlMagnifier } from 'react-icons/Sl'
 
 const IconImageContainer = styled.div`
   padding: 132px 0 32px 0;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,6 +22,9 @@ const StyledInput = styled.input`
   font-size: 30px;
   color: #000000;
 `
+const StyledFilterImage = styled.div`
+  cursor: pointer;
+`
 
 const SearchInput = ({ ...props }) => {
   return (
@@ -30,7 +32,9 @@ const SearchInput = ({ ...props }) => {
       <IconImageContainer>
         <SlMagnifier />
         <StyledInput type="text" placeholder="Buscar" {...props}></StyledInput>
-        <IconImages imageName="FilterIcon" type="svg" />
+        <StyledFilterImage>
+          <IconImages imageName="FilterIcon" type="svg" />
+        </StyledFilterImage>
       </IconImageContainer>
     </>
   )
