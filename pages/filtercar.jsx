@@ -40,7 +40,7 @@ const PriceForm = styled.div`
 
 export default function FilterCar() {
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors }
   } = useForm({
@@ -62,37 +62,27 @@ export default function FilterCar() {
                 label="Marca"
                 placeholder="Digite a marca do carro"
                 name="carBrand"
-                {...register('carBrand')}
-                error={errors.carBrand}
+                control={control}
               />
               <Input
                 label="Cor"
                 placeholder="Digite a cor do carro"
                 name="carColour"
-                {...register('carColour')}
-                error={errors.carColour}
+                control={control}
               />
               <Input
                 label="Ano"
                 placeholder="Digite o ano no formato (YYYY)"
                 name="carYear"
-                {...register('carYear')}
-                error={errors.carYear}
+                control={control}
               />
               <PriceForm>
-                <Input
-                  label="Preço mín."
-                  placeholder="(R$)"
-                  name="LowestPrice"
-                  {...register('LowestPrice')}
-                  error={errors.LowestPrice}
-                />
+                <Input label="Preço mín." placeholder="(R$)" name="LowestPrice" control={control} />
                 <Input
                   label="Preço máx."
                   placeholder="(R$)"
                   name="HighestPrice"
-                  {...register('HighestPrice')}
-                  error={errors.HighestPrice}
+                  control={control}
                 />
               </PriceForm>
               <SavingButtonContainer>
