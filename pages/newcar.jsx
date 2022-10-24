@@ -106,6 +106,12 @@ export default function NewCar() {
                 name="carPlate"
                 control={control}
               />
+              <Input
+                label="Preço"
+                placeholder="Digite o preço do carro"
+                name="carPrice"
+                control={control}
+              />
               <ContainerButtonSave>
                 <ButtonSave type="submit" disabled={Object.keys(errors).length > 0}>
                   SALVAR

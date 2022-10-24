@@ -5,6 +5,7 @@
 5 - React-Icons - npm install react-icons --save
 6 - Perguntar ao Jose por que não funciona colocar Joi.number() no filtercar
 ** 7 - Ver por que no meu botão de salve não está tirando o cursor quando fica grey
+8 - Perguntar ao Diego se foi pegadinha faltar o preço no salvar um carro e nos cards e no filtro pede preço
 
 
 Para instalar:

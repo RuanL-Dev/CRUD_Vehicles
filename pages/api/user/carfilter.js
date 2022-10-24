@@ -10,8 +10,7 @@ carFilter.post(validate({ body: filterSchema }), async (req, res) => {
     const carFilter = await filterCarUser(req.body)
     res.status(200).json(carFilter)
   } catch (err) {
-    console.error(err)
-    throw err
+    return res.status(400).send(err.message)
   }
 })
 

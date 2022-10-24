@@ -10,8 +10,7 @@ addNewCar.post(validate({ body: newcarSchema }), async (req, res) => {
     const newCar = await addNewCarUser(req.body)
     res.status(201).json(newCar)
   } catch (err) {
-    console.error(err)
-    throw err
+    return res.status(400).send(err.message)
   }
 })
 
