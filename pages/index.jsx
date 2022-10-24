@@ -1,6 +1,4 @@
-import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import axios from 'axios'
 
 import ContainerPage from '../src/components/layout/container/ContainerPage'
 import SearchInput from '../src/components/search/SearchInput'
@@ -14,14 +12,6 @@ function HomePage() {
     router.push('/newcar')
   }
 
-  const handleCards = async () => {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/carfilter`)
-    console.log(response)
-  }
-
-  useEffect(() => {
-    handleCards()
-  }, [])
   return (
     <>
       <Body>

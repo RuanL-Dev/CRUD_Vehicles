@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+
 import styled from 'styled-components'
 
 import Cards from './Cards'
@@ -35,6 +38,16 @@ const PostContainer = styled.div`
 `
 
 export default function Post() {
+  const [data, setData] = useState([])
+  const handleCards = async () => {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/carfilter`)
+    setData(response.data)
+  }
+
+  useEffect(() => {
+    handleCards()
+  }, [])
+  console.log(data)
   return (
     <>
       <MainContainer>
@@ -42,23 +55,29 @@ export default function Post() {
           <StyledTitleFavorites>Favoritos</StyledTitleFavorites>
         </MyFavorites>
         <PostContainer>
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
+          {data.map((post) => (
+            <Cards
+              key={post._id}
+              name={post.carModel}
+              price={post.carPrice}
+              description={post.carDescription}
+              year={post.carYear}
+            />
+          ))}
         </PostContainer>
         <MyAnnounces>
           <StyledTitleAnnounces>Meus anúncios</StyledTitleAnnounces>
         </MyAnnounces>
         <PostContainer>
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
+          {data.map((post) => (
+            <Cards
+              key={post._id}
+              name={post.carModel}
+              price={post.carPrice}
+              description={post.carDescription}
+              year={post.carYear}
+            />
+          ))}
         </PostContainer>
       </MainContainer>
     </>

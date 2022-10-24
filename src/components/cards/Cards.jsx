@@ -17,7 +17,6 @@ const StyledCardIcons = styled.div`
   justify-content: flex-end;
   gap: 10px;
   margin-right: 7px;
-  cursor: pointer;
 `
 
 const StyledCarName = styled.p`
@@ -37,20 +36,29 @@ const StyledCarDescription = styled.p`
 const StyledCarYear = styled.p`
   font-size: 14px;
 `
+const StyledButtonIcon = styled.button`
+  cursor: pointer;
+`
 
-export default function Post() {
+export default function Cards({ name, price, description, year }) {
   return (
     <>
       <CardContainer>
         <StyledCardIcons>
-          <IconImages imageName="EditIcon" type="svg" size="40px" />
-          <IconImages imageName="DeleteIcon" type="svg" size="25px" />
-          <IconImages imageName="LikeIcon" type="svg" size="25px" />
+          <StyledButtonIcon>
+            <IconImages imageName="EditIcon" type="svg" size="40px" />
+          </StyledButtonIcon>
+          <StyledButtonIcon>
+            <IconImages imageName="DeleteIcon" type="svg" size="25px" />
+          </StyledButtonIcon>
+          <StyledButtonIcon>
+            <IconImages imageName="LikeIcon" type="svg" size="25px" />
+          </StyledButtonIcon>
         </StyledCardIcons>
-        <StyledCarName>SANDERO</StyledCarName>
-        <StyledCarPrice>PREÇO: 22.000</StyledCarPrice>
-        <StyledCarDescription>DESCRIÇÃO: Único dono, usado 6 anos</StyledCarDescription>
-        <StyledCarYear>ANO: 2016</StyledCarYear>
+        <StyledCarName>{name}</StyledCarName>
+        <StyledCarPrice>PREÇO: {price}</StyledCarPrice>
+        <StyledCarDescription>DESCRIÇÃO: {description}</StyledCarDescription>
+        <StyledCarYear>ANO: {year}</StyledCarYear>
       </CardContainer>
     </>
   )

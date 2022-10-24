@@ -92,6 +92,12 @@ export default function NewCar() {
                 control={control}
               />
               <Input
+                label="Descrição"
+                placeholder="Faça uma breve descrição do seu carro"
+                name="carDescription"
+                control={control}
+              />
+              <Input
                 label="Ano"
                 placeholder="Digite o ano no formato (YYYY)"
                 name="carYear"
