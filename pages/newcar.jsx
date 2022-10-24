@@ -34,7 +34,7 @@ const Form = styled.form`
 
 export default function NewCar() {
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors }
   } = useForm({
@@ -57,36 +57,31 @@ export default function NewCar() {
                 label="Nome"
                 placeholder="Insira um novo nome"
                 name="carModel"
-                {...register('carModel')}
-                error={errors.carModel}
+                control={control}
               />
               <Input
                 label="Marca"
                 placeholder="Digite a marca do carro"
                 name="carBrand"
-                {...register('carBrand')}
-                error={errors.carBrand}
+                control={control}
               />
               <Input
                 label="Cor"
                 placeholder="Digite a cor do carro"
                 name="carColor"
-                {...register('carColor')}
-                error={errors.carColor}
+                control={control}
               />
               <Input
                 label="Ano"
                 placeholder="Digite o ano no formato (YYYY)"
                 name="carYear"
-                {...register('carYear')}
-                error={errors.carYear}
+                control={control}
               />
               <Input
                 label="Placa"
                 placeholder="Digite a placa do carro"
                 name="carPlate"
-                {...register('carPlate')}
-                error={errors.carPlate}
+                control={control}
               />
               <ContainerButtonSave>
                 <ButtonSave type="submit" disabled={Object.keys(errors).length > 0}>

@@ -11,15 +11,14 @@ const StyledButtonSave = styled.button`
   cursor: pointer;
   transition: 0.3s;
 
+  ${(props) => !props.disabled && 'cursor: pointer;'}
   :hover {
     background-color: ${(props) => props.theme.buttonHover};
   }
 
   :disabled {
-    background-color: grey;
+    background-color: ${(props) => props.theme.disabled};
   }
-
-  ${(props) => !props.disabled && 'cursor: pointer;'};
 `
 
 const ButtonSave = ({ children, loading, disabled, ...props }) => {

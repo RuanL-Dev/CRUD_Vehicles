@@ -4,7 +4,7 @@
 4 - Não esquecer de refatorar o TYPOGRAPH - Label dos forms
 5 - React-Icons - npm install react-icons --save
 6 - Perguntar ao Jose por que não funciona colocar Joi.number() no filtercar
-** 7 - Ver por que meu botão nao está funcionando o disabled
+** 7 - Ver por que no meu botão de salve não está tirando o cursor quando fica grey
 
 
 Para instalar:
