@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-
 import IconImages from '../iconImage/IconImages'
 
 const CardContainer = styled.div`
@@ -10,13 +9,6 @@ const CardContainer = styled.div`
   box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.25);
   padding: 10px;
   color: white;
-`
-
-const StyledCardIcons = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-right: 7px;
 `
 
 const StyledCarName = styled.p`
@@ -36,25 +28,15 @@ const StyledCarDescription = styled.p`
 const StyledCarYear = styled.p`
   font-size: 14px;
 `
-const StyledButtonIcon = styled.button`
-  cursor: pointer;
+const StyledChildrenIcons = styled.div`
+
 `
 
-export default function Cards({ name, price, description, year }) {
+export default function Cards({ children, name, price, description, year }) {
   return (
     <>
       <CardContainer>
-        <StyledCardIcons>
-          <StyledButtonIcon>
-            <IconImages imageName="EditIcon" type="svg" size="40px" />
-          </StyledButtonIcon>
-          <StyledButtonIcon>
-            <IconImages imageName="DeleteIcon" type="svg" size="25px" />
-          </StyledButtonIcon>
-          <StyledButtonIcon>
-            <IconImages imageName="LikeIcon" type="svg" size="25px" />
-          </StyledButtonIcon>
-        </StyledCardIcons>
+        <StyledChildrenIcons>{children}</StyledChildrenIcons>
         <StyledCarName>{name}</StyledCarName>
         <StyledCarPrice>PREÇO: {price}</StyledCarPrice>
         <StyledCarDescription>DESCRIÇÃO: {description}</StyledCarDescription>

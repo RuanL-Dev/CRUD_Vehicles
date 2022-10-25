@@ -4,6 +4,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 
 import Cards from './Cards'
+import MenuCards from './MenuCards'
 
 const MainContainer = styled.div`
   display: flex;
@@ -61,7 +62,9 @@ export default function Post() {
               price={post.carPrice}
               description={post.carDescription}
               year={post.carYear}
-            />
+            >
+              <MenuCards />
+            </Cards>
           ))}
         </PostContainer>
         <MyAnnounces>
@@ -75,7 +78,9 @@ export default function Post() {
               price={post.carPrice}
               description={post.carDescription}
               year={post.carYear}
-            />
+            >
+              <MenuCards />
+            </Cards>
           ))}
         </PostContainer>
       </MainContainer>
