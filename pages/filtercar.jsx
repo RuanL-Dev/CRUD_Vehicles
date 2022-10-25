@@ -17,6 +17,29 @@ const FormContainer = styled.div`
   padding: 150px;
   margin-bottom: 5vh;
   position: relative;
+  @media (max-width: 810px) {
+    padding: 100px;
+  }
+
+  @media (max-width: 650px) {
+    padding: 80px;
+    padding-bottom: 100px;
+  }
+
+  @media (max-width: 650px) {
+    padding: 50px;
+    padding-bottom: 100px;
+  }
+
+  @media (max-width: 530px) {
+    padding: 20px;
+    padding-bottom: 100px;
+  }
+
+  @media (max-width: 470px) {
+    padding: 10px;
+    padding-bottom: 100px;
+  }
 `
 
 const StyledArrow = styled.button`
@@ -24,6 +47,21 @@ const StyledArrow = styled.button`
   cursor: pointer;
   border: none;
   background-color: ${(props) => props.theme.background};
+  @media (max-width: 830px) {
+    margin: 50px 650px 0px 0px;
+  }
+
+  @media (max-width: 730px) {
+    margin: 100px 350px 0px 0px;
+  }
+
+  @media (max-width: 430px) {
+    margin: 100px 250px 0px 0px;
+  }
+
+  @media (max-width: 330px) {
+    margin: 100px 150px 0px 0px;
+  }
 `
 
 const SavingButtonContainer = styled.div`
@@ -37,6 +75,21 @@ const Form = styled.form`
   flex-direction: column;
   gap: 20px;
   width: 400px;
+  @media (max-width: 470px) {
+    width: 400px;
+  }
+
+  @media (max-width: 445px) {
+    width: 350px;
+  }
+
+  @media (max-width: 390px) {
+    width: 280px;
+  }
+
+  @media (max-width: 330px) {
+    width: 200px;
+  }
 `
 
 const PriceForm = styled.div`
