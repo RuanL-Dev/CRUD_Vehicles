@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 const StyledMainContainer = styled.div`
   background-color: ${(props) => props.theme.background};
-  width: 896px;
-  height: auto;
+  width: 900px;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;

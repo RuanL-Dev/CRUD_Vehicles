@@ -23,3 +23,11 @@ export const filterSchema = Joi.object({
 export const deleteCarSchema = Joi.object({
   id: Joi.objectId().required()
 })
+
+export const editCarSchema = Joi.object({
+  id: Joi.objectId().required(),
+  carModel: Joi.string().required().max(30),
+  carPrice: Joi.string().required().max(15),
+  carDescription: Joi.string().required().max(70),
+  carYear: Joi.string().required().max(4).min(4)
+})

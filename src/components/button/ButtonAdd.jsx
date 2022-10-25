@@ -13,6 +13,11 @@ const StyledButtonAdd = styled.button`
   :hover {
     background-color: ${(props) => props.theme.buttonHover};
   }
+  @media (max-width: 400px) {
+    width: 250px;
+    padding: 12px 50px;
+    font-size: 20px;
+  }
 `
 
 const ButtonAdd = ({ children, loading, disabled, ...props }) => {

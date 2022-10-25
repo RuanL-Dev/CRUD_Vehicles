@@ -12,21 +12,32 @@ import Cards from '../src/components/cards/Cards'
 const SecondaryContainer = styled.div`
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
   width: 90%;
-  margin-bottom: 2vh;
 `
 
 const MyFavorites = styled.div`
   margin-top: 30px;
+
+  @media (max-width: 500px) {
+    text-align: center;
+  }
 `
 
 const StyledTitleFavorites = styled.div`
   font-size: 18px;
+  @media (max-width: 500px) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 const MyAnnounces = styled.div`
   margin-top: 30px;
+
+  @media (max-width: 500px) {
+    text-align: center;
+  }
 `
 
 const StyledTitleAnnounces = styled.div`
@@ -39,6 +50,21 @@ const FavoritesPostContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 45px;
   grid-row-gap: 43px;
+
+  @media (max-width: 800px) {
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+  }
+  @media (max-width: 750px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 10px;
+    grid-column-gap: 0px;
+  }
+  @media (max-width: 500px) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 const AnnouncesPostContainer = styled.div`
@@ -47,13 +73,27 @@ const AnnouncesPostContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 45px;
   grid-row-gap: 43px;
+
+  @media (max-width: 800px) {
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+  }
+  @media (max-width: 750px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 10px;
+    grid-column-gap: 0px;
+  }
+  @media (max-width: 500px) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 const fetcher = (url) => axios.get(url).then((res) => res.data)
 
 function HomePage() {
   const { data } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`, fetcher)
-  console.log(data)
 
   const router = useRouter()
   const handleClick = () => {

@@ -8,6 +8,8 @@ import { GoTrashcan } from 'react-icons/go'
 import { FaRegEdit } from 'react-icons/fa'
 import { BsBookmarkHeart } from 'react-icons/bs'
 
+import EditCard from './EditCard'
+
 const CardContainer = styled.div`
   background-color: #f04f4f;
   width: 220px;
@@ -54,11 +56,14 @@ const StyledChildren = styled.div``
 
 export default function Card({ name, price, description, year, id }) {
   const { mutate } = useSWRConfig()
+  const [editCard, setEditCard] = useState(false)
   const [like, setLike] = useState(false)
 
   const handleEdit = async () => {
-    console.log('Editar carro info')
-    console.log(id)
+    setEditCard(!editCard)
+  }
+  const handleLike = async () => {
+    setLike(!like)
   }
 
   const handleDelete = async () => {
@@ -86,15 +91,20 @@ export default function Card({ name, price, description, year, id }) {
             <StyledIconButton>
               <GoTrashcan onClick={handleDelete} />
             </StyledIconButton>
-            <StyledIconButton onClick={() => setLike(!like)}>
+            <StyledIconButton onClick={handleLike}>
               <BsBookmarkHeart />
             </StyledIconButton>
           </StyledCardIcons>
         </StyledChildren>
-        <StyledCarName>{name}</StyledCarName>
-        <StyledCarPrice>PREÇO: {price}R$</StyledCarPrice>
-        <StyledCarDescription>DESCRIÇÃO: {description}</StyledCarDescription>
-        <StyledCarYear>ANO: {year}</StyledCarYear>
+        {!editCard && (
+          <>
+            <StyledCarName>{name}</StyledCarName>
+            <StyledCarPrice>PREÇO R$: {price}</StyledCarPrice>
+            <StyledCarDescription>DESCRIÇÃO: {description}</StyledCarDescription>
+            <StyledCarYear>ANO: {year}</StyledCarYear>
+          </>
+        )}
+        {editCard && <EditCard id={id} />}
       </CardContainer>
     </>
   )

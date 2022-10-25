@@ -13,7 +13,7 @@ const IconImageContainer = styled.div`
 `
 
 const StyledInput = styled.input`
-  width: 740px;
+  width: 730px;
   height: 60px;
   left: 228px;
   top: 132px;
@@ -24,6 +24,19 @@ const StyledInput = styled.input`
   border: none;
   font-size: 30px;
   color: #000000;
+
+  @media (max-width: 850px) {
+    width: auto;
+  }
+  @media (max-width: 630px) {
+    width: 400px;
+  }
+  @media (max-width: 510px) {
+    width: 300px;
+  }
+  @media (max-width: 400px) {
+    width: 250px;
+  }
 `
 const StyledFilterImage = styled.button`
   cursor: pointer;
