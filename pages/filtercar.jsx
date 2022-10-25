@@ -17,7 +17,6 @@ const FormContainer = styled.div`
   padding: 150px;
   margin-bottom: 5vh;
   position: relative;
-  box-sizing: border-box;
 `
 
 const StyledArrow = styled.button`
@@ -37,6 +36,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 400px;
 `
 
 const PriceForm = styled.div`

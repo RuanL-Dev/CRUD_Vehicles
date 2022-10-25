@@ -17,7 +17,6 @@ const FormContainer = styled.div`
   padding: 150px;
   margin-bottom: 10vh;
   position: relative;
-  min-width: 400px;
 `
 
 const StyledIconArrow = styled.button`
