@@ -47,7 +47,6 @@ export default function Post() {
   useEffect(() => {
     handleCards()
   }, [])
-  console.log(data)
   return (
     <>
       <MainContainer>

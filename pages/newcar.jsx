@@ -16,6 +16,8 @@ const FormContainer = styled.div`
   background-color: ${(props) => props.theme.secondBackgroundColor};
   padding: 150px;
   margin-bottom: 10vh;
+  position: relative;
+  min-width: 400px;
 `
 
 const StyledIconArrow = styled.button`
@@ -26,14 +28,16 @@ const StyledIconArrow = styled.button`
 `
 
 const ContainerButtonSave = styled.div`
-  padding-left: 240px;
-  margin-top: 50px;
+  position: absolute;
+  right: 50px;
+  bottom: 40px;
 `
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 400px;
 `
 
 export default function NewCar() {
@@ -41,9 +45,10 @@ export default function NewCar() {
   const {
     control,
     handleSubmit,
-    formState: { errors }
+    formState: { errors, isValid }
   } = useForm({
-    resolver: joiResolver(newcarSchema)
+    resolver: joiResolver(newcarSchema),
+    mode: 'all'
   })
 
   const handleForm = async (data) => {
@@ -116,7 +121,7 @@ export default function NewCar() {
                 control={control}
               />
               <ContainerButtonSave>
-                <ButtonSave type="submit" disabled={Object.keys(errors).length > 0}>
+                <ButtonSave type="submit" disabled={Object.keys(errors).length > 0 || !isValid}>
                   SALVAR
                 </ButtonSave>
               </ContainerButtonSave>

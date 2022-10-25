@@ -15,7 +15,9 @@ import IconImages from '../src/components/iconImage/IconImages'
 const FormContainer = styled.div`
   background-color: ${(props) => props.theme.secondBackgroundColor};
   padding: 150px;
-  margin-bottom: 10vh;
+  margin-bottom: 5vh;
+  position: relative;
+  box-sizing: border-box;
 `
 
 const StyledArrow = styled.button`
@@ -26,8 +28,9 @@ const StyledArrow = styled.button`
 `
 
 const SavingButtonContainer = styled.div`
-  padding-left: 240px;
-  margin-top: 50px;
+  position: absolute;
+  right: 50px;
+  bottom: 40px;
 `
 
 const Form = styled.form`
@@ -40,6 +43,7 @@ const PriceForm = styled.div`
   display: flex;
   gap: 20px;
   margin-top: 20px;
+  max-width: 450px;
 `
 
 export default function FilterCar() {
@@ -47,9 +51,10 @@ export default function FilterCar() {
   const {
     control,
     handleSubmit,
-    formState: { errors }
+    formState: { errors, isValid }
   } = useForm({
-    resolver: joiResolver(filterSchema)
+    resolver: joiResolver(filterSchema),
+    mode: 'all'
   })
   const handleForm = async (data) => {
     try {
@@ -105,7 +110,7 @@ export default function FilterCar() {
                 />
               </PriceForm>
               <SavingButtonContainer>
-                <ButtonSave type="submit" disabled={Object.keys(errors).length > 0}>
+                <ButtonSave type="submit" disabled={Object.keys(errors).length > 0 || !isValid}>
                   SALVAR
                 </ButtonSave>
               </SavingButtonContainer>
