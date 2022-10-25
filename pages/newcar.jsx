@@ -53,7 +53,7 @@ export default function NewCar() {
   const handleForm = async (data) => {
     try {
       const { status } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/user/addnewcar`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/cars/addnewcar`,
         data
       )
       if (status === 201) {

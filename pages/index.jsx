@@ -52,7 +52,7 @@ const AnnouncesPostContainer = styled.div`
 const fetcher = (url) => axios.get(url).then((res) => res.data)
 
 function HomePage() {
-  const { data } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/user/carfilter`, fetcher)
+  const { data } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`, fetcher)
   console.log(data)
 
   const router = useRouter()

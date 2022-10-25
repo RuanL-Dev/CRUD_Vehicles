@@ -59,7 +59,7 @@ export default function FilterCar() {
   const handleForm = async (data) => {
     try {
       const { status } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/user/carfilter`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`,
         data
       )
       if (status === 200) {

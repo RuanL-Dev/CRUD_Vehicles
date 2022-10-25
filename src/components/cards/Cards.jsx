@@ -63,12 +63,12 @@ export default function Card({ name, price, description, year, id }) {
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/user/addnewcar`, {
+      const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/addnewcar`, {
         data: {
           id
         }
       })
-      if (response.status === 200) mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/user/carfilter`)
+      if (response.status === 200) mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`)
       console.log(response.status)
     } catch (err) {
       console.error(err)

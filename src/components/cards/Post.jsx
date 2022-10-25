@@ -80,7 +80,7 @@ export default function Post({ id, name, price, description, year }) {
   }
 
   const handleCards = async () => {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/carfilter`)
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`)
     setData(response.data)
   }
 
