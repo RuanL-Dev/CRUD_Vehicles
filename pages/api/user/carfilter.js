@@ -1,7 +1,5 @@
 import createHandler from '../../../lib/middlewares/nextConnect'
-import validate from '../../../lib/middlewares/validation'
-import { filterCarUser, getCars } from '../../../modules/user/filter/filtercar.service'
-import { filterSchema } from '../../../modules/user/filter/filter.schema'
+import { getCars } from '../../../modules/cars/car.service'
 
 const carFilter = createHandler()
 

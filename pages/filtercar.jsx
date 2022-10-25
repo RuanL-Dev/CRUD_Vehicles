@@ -4,7 +4,7 @@ import { joiResolver } from '@hookform/resolvers/joi'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 
-import { filterSchema } from '../modules/user/filter/filter.schema'
+import { filterSchema } from '../modules/cars/car.schema'
 
 import Body from '../src/components/layout/body/Body'
 import ContainerPage from '../src/components/layout/container/ContainerPage'
