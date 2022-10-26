@@ -11,7 +11,7 @@ import { BsBookmarkHeart } from 'react-icons/bs'
 import EditCard from './EditCard'
 
 const CardContainer = styled.div`
-  background-color: #f04f4f;
+  background-color: ${(props) => props.color};
   width: 220px;
   height: 150px;
   border-radius: 10px;
@@ -41,20 +41,38 @@ const StyledCarYear = styled.p`
 const StyledCardIcons = styled.div`
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  margin-right: 7px;
-`
-
-const StyledIconButton = styled.button`
+  gap: 5px;
+  margin-left: 140px;
   cursor: pointer;
+  color: #0d0c0c;
+  max-width: 60px;
   font-size: 20px;
-  background-color: #f04f4f;
   border: none;
 `
 
-const StyledChildren = styled.div``
+const transformColor = (color) => {
+  console.log(color)
+  const colors = {
+    branco: '#e9e3e3',
+    branca: '#e9e3e3',
+    vermelho: 'rgb(199, 0, 0)',
+    rosa: 'rgb(255, 100, 255)',
+    verde: 'rgb(0, 180, 0)',
+    prata: 'silver',
+    azul: 'rgb(20, 100, 255)',
+    preto: 'rgb(0, 0, 0, 0.80)',
+    preta: 'rgb(0, 0, 0, 0.80)',
+    amarelo: 'rgb(215, 220, 128)',
+    laranja: 'orange',
+    cinza: 'grey',
+    marrom: '	#5C4033',
+    roxo: 'purple',
+    roxa: 'purple'
+  }
+  return colors[color] || 'rgb(190, 190, 190, 0.35)'
+}
 
-export default function Card({ name, price, description, year, id }) {
+export default function Card({ name, price, description, year, id, car }) {
   const { mutate } = useSWRConfig()
   const [editCard, setEditCard] = useState(false)
   const [like, setLike] = useState(false)
@@ -82,20 +100,12 @@ export default function Card({ name, price, description, year, id }) {
 
   return (
     <>
-      <CardContainer>
-        <StyledChildren>
-          <StyledCardIcons>
-            <StyledIconButton>
-              <FaRegEdit onClick={handleEdit} />
-            </StyledIconButton>
-            <StyledIconButton>
-              <GoTrashcan onClick={handleDelete} />
-            </StyledIconButton>
-            <StyledIconButton onClick={handleLike}>
-              <BsBookmarkHeart />
-            </StyledIconButton>
-          </StyledCardIcons>
-        </StyledChildren>
+      <CardContainer color={transformColor(car)}>
+        <StyledCardIcons>
+          <FaRegEdit onClick={handleEdit} />
+          <GoTrashcan onClick={handleDelete} />
+          <BsBookmarkHeart onClick={handleLike} />
+        </StyledCardIcons>
         {!editCard && (
           <>
             <StyledCarName>{name}</StyledCarName>
@@ -104,7 +114,9 @@ export default function Card({ name, price, description, year, id }) {
             <StyledCarYear>ANO: {year}</StyledCarYear>
           </>
         )}
-        {editCard && <EditCard id={id} />}
+        {editCard && (
+          <EditCard year={year} name={name} price={price} description={description} id={id} />
+        )}
       </CardContainer>
     </>
   )

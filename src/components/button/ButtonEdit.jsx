@@ -6,6 +6,7 @@ const StyledButtonEdit = styled.button`
   padding: 5px 10px;
   border-radius: 100px;
   border: 0;
+  cursor: pointer;
   margin-top: 5px;
   margin-left: 65px;
   font-size: 16px;

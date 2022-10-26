@@ -11,8 +11,7 @@ const EditCard = ({ name, price, description, year, id }) => {
     handleSubmit,
     formState: { isValid }
   } = useForm({
-    resolver: joiResolver(editCarSchema),
-    mode: 'all'
+    resolver: joiResolver(editCarSchema)
   })
 
   const handleSaveEdit = (data) => {
@@ -21,25 +20,32 @@ const EditCard = ({ name, price, description, year, id }) => {
   return (
     <form onSubmit={handleSubmit(handleSaveEdit)}>
       <ControlledTextarea
-        placeholder="Digite o dado correto"
+        placeholder="Altere o nome"
         name="name"
         control={control}
         defaultValue={name}
       />
       <ControlledTextarea
-        placeholder="Digite o dado correto"
+        placeholder="Altere o preço"
         name="price"
         control={control}
         defaultValue={price}
       />
       <ControlledTextarea
-        placeholder="Digite o dado correto"
+        placeholder="Altere a descrição"
         name="description"
         control={control}
         defaultValue={description}
       />
-      <ControlledTextarea control={control} name="year" defaultValue={year} />
-      <ButtonEdit disabled={!isValid}>Salvar</ButtonEdit>
+      <ControlledTextarea
+        placeholder="Altere o ano"
+        control={control}
+        name="year"
+        defaultValue={year}
+      />
+      <ButtonEdit type="submit" onClick={() => handleSaveEdit}>
+        Salvar
+      </ButtonEdit>
     </form>
   )
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import useSWR from 'swr'
@@ -93,17 +94,36 @@ const AnnouncesPostContainer = styled.div`
 const fetcher = (url) => axios.get(url).then((res) => res.data)
 
 function HomePage() {
+  const [car, setCar] = useState('')
   const { data } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`, fetcher)
 
   const router = useRouter()
   const handleClick = () => {
     router.push('/newcar')
   }
+
+  const search = (data) => {
+    return data?.filter(
+      (post) =>
+        post.carModel?.toLowerCase().includes(car) ||
+        post.carBrand?.toLowerCase().includes(car) ||
+        post.carColor?.toLowerCase().includes(car) ||
+        post.carYear?.toLowerCase().includes(car) ||
+        post.carPlate?.toLowerCase().includes(car) ||
+        post.carPrice?.toLowerCase().includes(car) ||
+        post.carDescription?.toLowerCase().includes(car)
+    )
+  }
   return (
     <>
       <Body>
         <ContainerPage>
-          <SearchInput />
+          <SearchInput 
+            type="text"
+            name="search"
+            placeholder="buscar"
+            onChange={(event) => setCar(event.target.value)}
+          />
           <ButtonAdd type="submit" onClick={handleClick}>
             ADICIONAR
           </ButtonAdd>
@@ -118,7 +138,7 @@ function HomePage() {
               <StyledTitleAnnounces>Meus anúncios</StyledTitleAnnounces>
             </MyAnnounces>
             <AnnouncesPostContainer>
-              {data?.map((post) => (
+              {search(data)?.map((post) => (
                 <Cards
                   key={post._id}
                   name={post.carModel}
@@ -126,6 +146,7 @@ function HomePage() {
                   description={post.carDescription}
                   year={post.carYear}
                   id={post._id}
+                  car={post.carColor.toLowerCase()}
                 ></Cards>
               ))}
             </AnnouncesPostContainer>
