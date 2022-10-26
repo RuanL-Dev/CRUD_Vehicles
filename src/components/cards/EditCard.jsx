@@ -3,15 +3,16 @@ import { joiResolver } from '@hookform/resolvers/joi'
 
 import ControlledTextarea from '../input/ControlledTextarea'
 import { editCarSchema } from '../../../modules/cars/car.schema'
-import ButtonEdit from '../button/ButtonEdit'
+import ButtonSave from '../button/ButtonSave'
 
 const EditCard = ({ name, price, description, year, id }) => {
   const {
     control,
     handleSubmit,
-    formState: { isValid }
+    formState: { errors, isValid }
   } = useForm({
-    resolver: joiResolver(editCarSchema)
+    resolver: joiResolver(editCarSchema),
+    mode: 'all'
   })
 
   const handleSaveEdit = (data) => {
@@ -43,9 +44,9 @@ const EditCard = ({ name, price, description, year, id }) => {
         name="year"
         defaultValue={year}
       />
-      <ButtonEdit type="submit" onClick={() => handleSaveEdit}>
-        Salvar
-      </ButtonEdit>
+      <ButtonSave type="submit">
+        SALVAR
+      </ButtonSave>
     </form>
   )
 }

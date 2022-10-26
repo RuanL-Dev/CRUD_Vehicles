@@ -51,7 +51,6 @@ const StyledCardIcons = styled.div`
 `
 
 const transformColor = (color) => {
-  console.log(color)
   const colors = {
     branco: '#e9e3e3',
     branca: '#e9e3e3',
