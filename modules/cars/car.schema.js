@@ -25,9 +25,12 @@ export const deleteCarSchema = Joi.object({
 })
 
 export const editCarSchema = Joi.object({
-  id: Joi.objectId().required(),
-  carModel: Joi.string().required().max(30),
-  carPrice: Joi.string().required().max(15),
-  carDescription: Joi.string().required().max(70),
-  carYear: Joi.string().required().max(4).min(4)
+  id: Joi.objectId(),
+  carModel: Joi.string(),
+  carBrand: Joi.string(),
+  carColor: Joi.string(),
+  carDescription: Joi.string(),
+  carYear: Joi.string(),
+  carPlate: Joi.string(),
+  carPrice: Joi.string()
 })

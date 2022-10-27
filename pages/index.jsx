@@ -118,7 +118,7 @@ function HomePage() {
     <>
       <Body>
         <ContainerPage>
-          <SearchInput 
+          <SearchInput
             type="text"
             name="search"
             placeholder="buscar"
@@ -145,8 +145,10 @@ function HomePage() {
                   price={post.carPrice}
                   description={post.carDescription}
                   year={post.carYear}
+                  brand={post.carBrand}
+                  plate={post.carPlate}
                   id={post._id}
-                  car={post.carColor.toLowerCase()}
+                  carColor={post.carColor.toLowerCase()}
                 ></Cards>
               ))}
             </AnnouncesPostContainer>

@@ -8,7 +8,7 @@ import { GoTrashcan } from 'react-icons/go'
 import { FaRegEdit } from 'react-icons/fa'
 import { BsBookmarkHeart } from 'react-icons/bs'
 
-import EditCard from './EditCard'
+import EditCardRouter from './EditCardRouter'
 
 const CardContainer = styled.div`
   background-color: ${(props) => props.color};
@@ -55,6 +55,7 @@ const transformColor = (color) => {
     branco: '#e9e3e3',
     branca: '#e9e3e3',
     vermelho: 'rgb(199, 0, 0)',
+    vermelha: 'rgb(199, 0, 0)',
     rosa: 'rgb(255, 100, 255)',
     verde: 'rgb(0, 180, 0)',
     prata: 'silver',
@@ -71,13 +72,14 @@ const transformColor = (color) => {
   return colors[color] || 'rgb(190, 190, 190, 0.35)'
 }
 
-export default function Card({ name, price, description, year, id, car }) {
-  const { mutate } = useSWRConfig()
+export default function Card({ name, price, description, year, brand, plate, carColor, id }) {
   const [editCard, setEditCard] = useState(false)
+  const { mutate } = useSWRConfig()
   const [like, setLike] = useState(false)
 
   const handleEdit = async () => {
     setEditCard(!editCard)
+    mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`)
   }
   const handleLike = async () => {
     setLike(!like)
@@ -99,7 +101,7 @@ export default function Card({ name, price, description, year, id, car }) {
 
   return (
     <>
-      <CardContainer color={transformColor(car)}>
+      <CardContainer color={transformColor(carColor)}>
         <StyledCardIcons>
           <FaRegEdit onClick={handleEdit} />
           <GoTrashcan onClick={handleDelete} />
@@ -114,7 +116,17 @@ export default function Card({ name, price, description, year, id, car }) {
           </>
         )}
         {editCard && (
-          <EditCard year={year} name={name} price={price} description={description} id={id} />
+          <EditCardRouter
+            id={id}
+            name={name}
+            price={price}
+            description={description}
+            year={year}
+            brand={brand}
+            carColor={carColor}
+            plate={plate}
+            onSave={handleEdit}
+          />
         )}
       </CardContainer>
     </>

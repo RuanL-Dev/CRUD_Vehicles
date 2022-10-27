@@ -20,3 +20,23 @@ export const deleteCar = async (id) => {
     _id: id
   })
 }
+
+export const editCar = async (body) => {
+  return await NewCar.findOneAndUpdate(
+    {
+      _id: body._id
+    },
+    {
+      carModel: body.carModel,
+      carBrand: body.carBrand,
+      carColor: body.carColor,
+      carPlate: body.carPlate,
+      carPrice: body.carPrice,
+      carDescription: body.carDescription,
+      carYear: body.carYear
+    },
+    {
+      new: true
+    }
+  )
+}
