@@ -45,29 +45,6 @@ const StyledTitleAnnounces = styled.div`
   font-size: 18px;
 `
 
-const FavoritesPostContainer = styled.div`
-  margin-top: 20px;
-  display: ${(props) => (props.like ? 'grid' : 'none')};
-  grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 45px;
-  grid-row-gap: 43px;
-
-  @media (max-width: 800px) {
-    grid-row-gap: 20px;
-    grid-column-gap: 20px;
-  }
-  @media (max-width: 750px) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-row-gap: 10px;
-    grid-column-gap: 0px;
-  }
-  @media (max-width: 500px) {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-`
-
 const AnnouncesPostContainer = styled.div`
   margin-top: 20px;
   display: grid;
@@ -131,26 +108,44 @@ function HomePage() {
             <MyFavorites>
               <StyledTitleFavorites>Favoritos</StyledTitleFavorites>
             </MyFavorites>
-            <FavoritesPostContainer>
-              <Cards />
-            </FavoritesPostContainer>
+            <AnnouncesPostContainer>
+              {search(data)
+                ?.filter((p) => p.isLiked)
+                .map((post) => (
+                  <Cards
+                    key={post._id}
+                    name={post.carModel}
+                    price={post.carPrice}
+                    description={post.carDescription}
+                    year={post.carYear}
+                    brand={post.carBrand}
+                    plate={post.carPlate}
+                    id={post._id}
+                    carColor={post.carColor.toLowerCase()}
+                    isLiked={post.isLiked}
+                  />
+                ))}
+            </AnnouncesPostContainer>
             <MyAnnounces>
               <StyledTitleAnnounces>Meus anúncios</StyledTitleAnnounces>
             </MyAnnounces>
             <AnnouncesPostContainer>
-              {search(data)?.map((post) => (
-                <Cards
-                  key={post._id}
-                  name={post.carModel}
-                  price={post.carPrice}
-                  description={post.carDescription}
-                  year={post.carYear}
-                  brand={post.carBrand}
-                  plate={post.carPlate}
-                  id={post._id}
-                  carColor={post.carColor.toLowerCase()}
-                ></Cards>
-              ))}
+              {search(data)
+                ?.filter((p) => !p.isLiked)
+                .map((post) => (
+                  <Cards
+                    key={post._id}
+                    name={post.carModel}
+                    price={post.carPrice}
+                    description={post.carDescription}
+                    year={post.carYear}
+                    brand={post.carBrand}
+                    plate={post.carPlate}
+                    id={post._id}
+                    carColor={post.carColor.toLowerCase()}
+                    isLiked={post.isLiked}
+                  />
+                ))}
             </AnnouncesPostContainer>
           </SecondaryContainer>
         </ContainerPage>

@@ -8,7 +8,6 @@
 10) Ajustar tamanho do card para caso a descrição deja muito grande
 11 - Refatorar o modules/user para modules/car e colocar tudo no mesmo arquivo
 12) Trocar cores no TexteArea.jsx para theme
-13) Ajustar cards nos favoritos que aparece na responsividade abaixo de 500px
 
 
 Para instalar:

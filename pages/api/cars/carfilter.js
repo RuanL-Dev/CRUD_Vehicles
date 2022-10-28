@@ -18,7 +18,7 @@ carFilter
     try {
       const refreshEditCar = await editCar(req.body)
       if (refreshEditCar) res.status(201).send({ ok: true })
-      return res.status(400).send('carro não encontrado')
+      return res.status(400).send(res.message)
     } catch (err) {
       return res.status(500).send(err.message)
     }

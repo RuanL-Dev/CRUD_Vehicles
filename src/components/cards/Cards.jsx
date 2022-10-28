@@ -72,17 +72,47 @@ const transformColor = (color) => {
   return colors[color] || 'rgb(190, 190, 190, 0.35)'
 }
 
-export default function Card({ name, price, description, year, brand, plate, carColor, id }) {
+export default function Card({
+  name,
+  price,
+  description,
+  year,
+  brand,
+  plate,
+  carColor,
+  id,
+  isLiked
+}) {
   const [editCard, setEditCard] = useState(false)
   const { mutate } = useSWRConfig()
-  const [like, setLike] = useState(false)
 
   const handleEdit = async () => {
     setEditCard(!editCard)
     mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`)
   }
   const handleLike = async () => {
-    setLike(!like)
+    try {
+      const { status } = await axios.patch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`,
+        {
+          _id: id,
+          carName: name,
+          carPrice: price,
+          carDescription: description,
+          carYear: year,
+          carBrand: brand,
+          carPlate: plate,
+          carColor: carColor,
+          isLiked: !isLiked
+        }
+      )
+      if (status === 201) {
+        mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`)
+      }
+    } catch (err) {
+      console.error(err)
+      throw err
+    }
   }
 
   const handleDelete = async () => {

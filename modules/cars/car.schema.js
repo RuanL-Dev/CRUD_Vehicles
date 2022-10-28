@@ -32,5 +32,6 @@ export const editCarSchema = Joi.object({
   carDescription: Joi.string(),
   carYear: Joi.string(),
   carPlate: Joi.string(),
-  carPrice: Joi.string()
+  carPrice: Joi.string(),
+  isLiked: Joi.boolean()
 })

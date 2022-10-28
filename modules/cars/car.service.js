@@ -33,7 +33,8 @@ export const editCar = async (body) => {
       carPlate: body.carPlate,
       carPrice: body.carPrice,
       carDescription: body.carDescription,
-      carYear: body.carYear
+      carYear: body.carYear,
+      isLiked: body.isLiked
     },
     {
       new: true

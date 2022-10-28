@@ -7,7 +7,8 @@ const NewCarSchema = new mongoose.Schema({
   carDescription: { type: String, required: true, maxlength: 70 },
   carYear: { type: String, required: true, maxlength: 4, minlength: 4 },
   carPlate: { type: String, required: true, maxlength: 15 },
-  carPrice: { type: String, required: true, maxlength: 15 }
+  carPrice: { type: String, required: true, maxlength: 15 },
+  isLiked: { type: Boolean }
 })
 
 export default mongoose.models.NewCar || mongoose.model('NewCar', NewCarSchema)
