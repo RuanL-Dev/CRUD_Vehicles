@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 import axios from 'axios'
-import { useRouter } from 'next/router'
 
 import { editCarSchema } from '../../../modules/cars/car.schema'
 
@@ -81,7 +80,6 @@ export default function EditCardRouter({
   plate,
   onSave
 }) {
-  const router = useRouter()
   const {
     control,
     handleSubmit,
@@ -116,7 +114,6 @@ export default function EditCardRouter({
         }
       )
       if (status === 201) {
-        router.push('/')
         onSave()
       }
     } catch (err) {

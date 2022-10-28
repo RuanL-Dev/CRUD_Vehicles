@@ -1,21 +1,18 @@
-import styled from 'styled-components'
-import { useForm } from 'react-hook-form'
-import { joiResolver } from '@hookform/resolvers/joi'
-import axios from 'axios'
+import { useState } from 'react'
+import useSWR from 'swr'
 import { useRouter } from 'next/router'
-
-import { filterSchema } from '../modules/cars/car.schema'
+import axios from 'axios'
+import styled from 'styled-components'
 
 import Body from '../src/components/layout/body/Body'
 import ContainerPage from '../src/components/layout/container/ContainerPage'
-import Input from '../src/components/input/Input'
-import ButtonSave from '../src/components/button/ButtonSave'
 import IconImages from '../src/components/iconImage/IconImages'
+import Cards from '../src/components/cards/Cards'
+import FilterInput from '../src/components/input/FilterInput'
 
 const FormContainer = styled.div`
   background-color: ${(props) => props.theme.secondBackgroundColor};
-  padding: 150px;
-  margin-bottom: 5vh;
+  padding: 100px;
   position: relative;
   @media (max-width: 810px) {
     padding: 100px;
@@ -64,12 +61,54 @@ const StyledArrow = styled.button`
   }
 `
 
-const SavingButtonContainer = styled.div`
-  position: absolute;
-  right: 50px;
-  bottom: 40px;
+const MyFavorites = styled.div`
+  margin-top: 30px;
+
+  @media (max-width: 500px) {
+    text-align: center;
+  }
+`
+const StyledTitleFavorites = styled.div`
+  font-size: 18px;
+  @media (max-width: 500px) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+`
+const AnnouncesPostContainer = styled.div`
+  margin: 20px 0 50px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 45px;
+  grid-row-gap: 43px;
+
+  @media (max-width: 800px) {
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+  }
+  @media (max-width: 750px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 10px;
+    grid-column-gap: 0px;
+  }
+  @media (max-width: 500px) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+`
+const MyAnnounces = styled.div`
+  margin-top: 30px;
+
+  @media (max-width: 500px) {
+    text-align: center;
+  }
 `
 
+const StyledTitleAnnounces = styled.div`
+  font-size: 18px;
+`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -98,30 +137,22 @@ const PriceForm = styled.div`
   margin-top: 20px;
   max-width: 450px;
 `
+const fetcher = (url) => axios.get(url).then((res) => res.data)
 
 export default function FilterCar() {
+  const { data } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`, fetcher)
   const router = useRouter()
-  const {
-    control,
-    handleSubmit,
-    formState: { errors, isValid }
-  } = useForm({
-    resolver: joiResolver(filterSchema),
-    mode: 'all'
-  })
-  const handleForm = async (data) => {
-    try {
-      const { status } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`,
-        data
-      )
-      if (status === 200) {
-        router.push('/')
-      }
-    } catch (err) {
-      console.error(err)
-      throw err
-    }
+  const [car, setCar] = useState('')
+
+  const filtering = (data) => {
+    return data?.filter(
+      (post) =>
+        post.carModel?.toLowerCase().includes(car) ||
+        post.carBrand?.toLowerCase().includes(car) ||
+        post.carColor?.toLowerCase().includes(car) ||
+        post.carYear?.toLowerCase().includes(car) ||
+        post.carPrice?.toLowerCase().includes(car)
+    )
   }
   const handleClick = () => {
     router.push('/')
@@ -134,41 +165,78 @@ export default function FilterCar() {
             <IconImages imageName="ArrowIcon" type="svg" />
           </StyledArrow>
           <FormContainer>
-            <Form onSubmit={handleSubmit(handleForm)}>
-              <Input
-                label="Marca"
-                placeholder="Digite a marca do carro"
-                name="carBrand"
-                control={control}
+            <Form>
+              <FilterInput
+                label="Nome ou Marca"
+                placeholder="Digite o nome ou a marca do carro"
+                onChange={(event) => setCar(event.target.value)}
               />
-              <Input
+              <FilterInput
                 label="Cor"
                 placeholder="Digite a cor do carro"
-                name="carColour"
-                control={control}
+                onChange={(event) => setCar(event.target.value)}
               />
-              <Input
+              <FilterInput
                 label="Ano"
                 placeholder="Digite o ano no formato (YYYY)"
-                name="carYear"
-                control={control}
+                onChange={(event) => setCar(event.target.value)}
               />
               <PriceForm>
-                <Input label="Preço mín." placeholder="(R$)" name="LowestPrice" control={control} />
-                <Input
+                <FilterInput
+                  label="Preço mín."
+                  placeholder="(R$)"
+                  onChange={(event) => setCar(event.target.value)}
+                />
+                <FilterInput
                   label="Preço máx."
                   placeholder="(R$)"
-                  name="HighestPrice"
-                  control={control}
+                  onChange={(event) => setCar(event.target.value)}
                 />
               </PriceForm>
-              <SavingButtonContainer>
-                <ButtonSave type="submit" disabled={Object.keys(errors).length > 0 || !isValid}>
-                  SALVAR
-                </ButtonSave>
-              </SavingButtonContainer>
             </Form>
           </FormContainer>
+          <MyFavorites>
+            <StyledTitleFavorites>Favoritos</StyledTitleFavorites>
+          </MyFavorites>
+          <AnnouncesPostContainer>
+            {filtering(data)
+              ?.filter((p) => p.isLiked)
+              .map((post) => (
+                <Cards
+                  key={post._id}
+                  name={post.carModel}
+                  price={post.carPrice}
+                  description={post.carDescription}
+                  year={post.carYear}
+                  brand={post.carBrand}
+                  plate={post.carPlate}
+                  id={post._id}
+                  carColor={post.carColor.toLowerCase()}
+                  isLiked={post.isLiked}
+                />
+              ))}
+          </AnnouncesPostContainer>
+          <MyAnnounces>
+            <StyledTitleAnnounces>Meus anúncios</StyledTitleAnnounces>
+          </MyAnnounces>
+          <AnnouncesPostContainer>
+            {filtering(data)
+              ?.filter((p) => !p.isLiked)
+              .map((post) => (
+                <Cards
+                  key={post._id}
+                  name={post.carModel}
+                  price={post.carPrice}
+                  description={post.carDescription}
+                  year={post.carYear}
+                  brand={post.carBrand}
+                  plate={post.carPlate}
+                  id={post._id}
+                  carColor={post.carColor.toLowerCase()}
+                  isLiked={post.isLiked}
+                />
+              ))}
+          </AnnouncesPostContainer>
         </ContainerPage>
       </Body>
     </>
