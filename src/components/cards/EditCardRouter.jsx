@@ -43,11 +43,14 @@ const ContainerButtonSave = styled.div`
   bottom: 20px;
   margin-top: 10px;
 
+  @media (max-width: 650px) {
+    right: 115px;
+  }
   @media (max-width: 450px) {
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 10px 20px;
+    padding: 10px 0px;
   }
 `
 
