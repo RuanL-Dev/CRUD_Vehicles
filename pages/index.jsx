@@ -49,12 +49,14 @@ const AnnouncesPostContainer = styled.div`
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 45px;
-  grid-row-gap: 43px;
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
 
-  @media (max-width: 800px) {
-    grid-row-gap: 10px;
-    grid-column-gap: 10px;
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 0.5fr);
+    grid-row-gap: 20px;
+    grid-column-gap: 0px;
+    margin-left: 100px;
   }
   @media (max-width: 750px) {
     align-items: center;

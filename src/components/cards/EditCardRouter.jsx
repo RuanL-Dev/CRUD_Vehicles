@@ -6,7 +6,7 @@ import axios from 'axios'
 import { editCarSchema } from '../../../modules/cars/car.schema'
 
 import Input from '../input/Input'
-import ButtonSave from '../button/ButtonAdd'
+import ButtonSave from '../button/ButtonSave'
 
 const StyledBody = styled.div`
   display: flex;

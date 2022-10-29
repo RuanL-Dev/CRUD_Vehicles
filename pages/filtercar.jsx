@@ -83,7 +83,8 @@ const AnnouncesPostContainer = styled.div`
   grid-column-gap: 45px;
   grid-row-gap: 43px;
 
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
     grid-row-gap: 20px;
     grid-column-gap: 20px;
   }
