@@ -19,8 +19,6 @@ const StyledInput = styled.input`
   &:focus {
     outline: none;
   }
-
-
 `
 
 const ContainerInput = styled.div`
