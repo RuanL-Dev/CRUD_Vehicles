@@ -147,7 +147,7 @@ export default function FilterCar() {
   const filtering = (data) => {
     return data?.filter(
       (post) =>
-        post.carModel?.toLowerCase().includes(car) ||
+        post.carModel?.includes(car) ||
         post.carBrand?.toLowerCase().includes(car) ||
         post.carColor?.toLowerCase().includes(car) ||
         post.carYear?.toLowerCase().includes(car) ||
@@ -167,8 +167,8 @@ export default function FilterCar() {
           <FormContainer>
             <Form>
               <FilterInput
-                label="Nome ou Marca"
-                placeholder="Digite o nome ou a marca do carro"
+                label="Marca."
+                placeholder="Digite a marca do carro"
                 onChange={(event) => setCar(event.target.value)}
               />
               <FilterInput

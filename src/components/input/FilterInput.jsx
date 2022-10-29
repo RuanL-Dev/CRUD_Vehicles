@@ -43,7 +43,7 @@ const FilterInput = ({ label, ...props }) => {
     <>
       <ContainerInput>
         <StyledLabel>{label}</StyledLabel>
-        <StyledInput type="text" placeholder="Buscar" {...props}></StyledInput>
+        <StyledInput type="text" {...props}></StyledInput>
       </ContainerInput>
     </>
   )
