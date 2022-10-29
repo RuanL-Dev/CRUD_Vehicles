@@ -5,56 +5,57 @@ import axios from 'axios'
 
 import { editCarSchema } from '../../../modules/cars/car.schema'
 
-import Body from '../layout/body/Body'
 import Input from '../input/Input'
 import ButtonAdd from '../button/ButtonAdd'
 
+const StyledBody = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+`
+
 const FormContainer = styled.div`
   background-color: ${(props) => props.theme.secondBackgroundColor};
-  padding: 150px;
+  padding: 100px;
   margin-bottom: 10vh;
   position: relative;
 
-  @media (max-width: 810px) {
+  @media (max-width: 850px) {
     padding: 100px;
   }
 
   @media (max-width: 650px) {
-    padding: 80px;
-    padding-bottom: 100px;
-  }
-
-  @media (max-width: 650px) {
-    padding: 50px;
-    padding-bottom: 100px;
-  }
-
-  @media (max-width: 530px) {
     padding: 20px;
     padding-bottom: 100px;
   }
 
-  @media (max-width: 470px) {
-    padding: 10px;
-    padding-bottom: 100px;
+  @media (max-width: 450px) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
   }
 `
 
 const ContainerButtonSave = styled.div`
   position: absolute;
-  right: 50px;
-  bottom: 40px;
+  right: 15px;
+  bottom: 20px;
+  margin-top: 10px;
+
+  @media (max-width: 450px) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 35px;
+  }
 `
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 400px;
-
-  @media (max-width: 470px) {
-    width: 400px;
-  }
+  width: 300px;
 
   @media (max-width: 445px) {
     width: 350px;
@@ -124,7 +125,7 @@ export default function EditCardRouter({
 
   return (
     <>
-      <Body>
+      <StyledBody>
         <FormContainer>
           <Form onSubmit={handleSubmit(handleForm)}>
             <Input
@@ -181,7 +182,7 @@ export default function EditCardRouter({
             </ContainerButtonSave>
           </Form>
         </FormContainer>
-      </Body>
+      </StyledBody>
     </>
   )
 }

@@ -84,15 +84,10 @@ const AnnouncesPostContainer = styled.div`
   grid-row-gap: 43px;
 
   @media (max-width: 800px) {
-    grid-row-gap: 10px;
-    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
   }
   @media (max-width: 750px) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-row-gap: 10px;
-    grid-column-gap: 0px;
-  }
-  @media (max-width: 500px) {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -114,12 +109,13 @@ const Form = styled.form`
   flex-direction: column;
   gap: 20px;
   width: 400px;
-  @media (max-width: 470px) {
+
+  @media (max-width: 640px) {
     width: 400px;
   }
 
   @media (max-width: 445px) {
-    width: 350px;
+    width: 300px;
   }
 
   @media (max-width: 390px) {
@@ -135,7 +131,7 @@ const PriceForm = styled.div`
   display: flex;
   gap: 20px;
   margin-top: 20px;
-  max-width: 450px;
+  justify-content: center;
 `
 const fetcher = (url) => axios.get(url).then((res) => res.data)
 

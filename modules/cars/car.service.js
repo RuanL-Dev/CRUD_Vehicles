@@ -11,7 +11,7 @@ export const addNewCarUser = async (body) => {
   }
 }
 
-export const getCars = async (limit = 10) => {
+export const getCars = async (limit = 20) => {
   return await NewCar.find().sort({ carYear: -1 }).limit(limit)
 }
 

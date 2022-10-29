@@ -57,11 +57,6 @@ const AnnouncesPostContainer = styled.div`
     grid-column-gap: 10px;
   }
   @media (max-width: 750px) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-row-gap: 10px;
-    grid-column-gap: 0px;
-  }
-  @media (max-width: 500px) {
     align-items: center;
     display: flex;
     flex-direction: column;

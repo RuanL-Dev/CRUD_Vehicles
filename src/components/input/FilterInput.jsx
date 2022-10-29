@@ -20,18 +20,7 @@ const StyledInput = styled.input`
     outline: none;
   }
 
-  @media (max-width: 850px) {
-    width: auto;
-  }
-  @media (max-width: 630px) {
-    width: 400px;
-  }
-  @media (max-width: 510px) {
-    width: 300px;
-  }
-  @media (max-width: 400px) {
-    width: 250px;
-  }
+
 `
 
 const ContainerInput = styled.div`

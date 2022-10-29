@@ -12,13 +12,14 @@ import EditCardRouter from './EditCardRouter'
 
 const CardContainer = styled.div`
   background-color: ${(props) => props.color};
-  width: 230px;
-  height: 160px;
+  width: 210px;
+  height: 170px;
   border-radius: 20px;
-  box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.3);
   padding: 10px;
   color: white;
-  transition: 0.3s;
+  transition: 0.4s;
 
   :hover {
     transform: scale3d(1.1, 1.1, 1);
