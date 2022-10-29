@@ -6,7 +6,7 @@ import axios from 'axios'
 import { editCarSchema } from '../../../modules/cars/car.schema'
 
 import Input from '../input/Input'
-import ButtonAdd from '../button/ButtonAdd'
+import ButtonSave from '../button/ButtonAdd'
 
 const StyledBody = styled.div`
   display: flex;
@@ -39,7 +39,7 @@ const FormContainer = styled.div`
 
 const ContainerButtonSave = styled.div`
   position: absolute;
-  right: 15px;
+  right: 150px;
   bottom: 20px;
   margin-top: 10px;
 
@@ -47,7 +47,7 @@ const ContainerButtonSave = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 10px 35px;
+    padding: 10px 20px;
   }
 `
 
@@ -178,7 +178,7 @@ export default function EditCardRouter({
               defaultValue={price}
             />
             <ContainerButtonSave>
-              <ButtonAdd type="submit">SALVAR</ButtonAdd>
+              <ButtonSave type="submit">SALVAR</ButtonSave>
             </ContainerButtonSave>
           </Form>
         </FormContainer>

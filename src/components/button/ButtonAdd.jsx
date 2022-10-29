@@ -3,10 +3,10 @@ import styled from 'styled-components'
 const StyledButtonAdd = styled.button`
   background-color: ${(props) => props.theme.buttonColor};
   color: rgba(2, 2, 2, 0.7);
-  padding: 12px 98px;
+  padding: 5px 15px;
   border-radius: 100px;
   border: 0;
-  font-size: 30px;
+  font-size: 25px;
   cursor: pointer;
   transition: 0.3s;
   position: relative;

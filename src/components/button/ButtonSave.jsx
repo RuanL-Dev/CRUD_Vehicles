@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const StyledButtonSave = styled.button`
   background-color: ${(props) => props.theme.buttonColor};
   color: rgba(2, 2, 2, 0.7);
-  padding: 10px 25px;
+  padding: 5px 20px;
   border-radius: 100px;
   border: 0;
   font-size: 20px;
