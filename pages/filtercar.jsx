@@ -137,7 +137,7 @@ const PriceForm = styled.div`
 const fetcher = (url) => axios.get(url).then((res) => res.data)
 
 export default function FilterCar() {
-  const { data } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`, fetcher)
+  const { data } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/indexCars`, fetcher)
   const router = useRouter()
   const [car, setCar] = useState('')
 

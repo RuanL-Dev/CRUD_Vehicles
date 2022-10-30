@@ -70,7 +70,7 @@ const fetcher = (url) => axios.get(url).then((res) => res.data)
 
 function HomePage() {
   const [car, setCar] = useState('')
-  const { data } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`, fetcher)
+  const { data } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/indexCars`, fetcher)
 
   const router = useRouter()
   const handleClick = () => {
@@ -80,7 +80,7 @@ function HomePage() {
   const search = (data) => {
     return data?.filter(
       (post) =>
-        post.carModel?.toLowerCase().includes(car) ||
+        post.carModel?.includes(car) ||
         post.carBrand?.toLowerCase().includes(car) ||
         post.carColor?.toLowerCase().includes(car) ||
         post.carYear?.toLowerCase().includes(car) ||

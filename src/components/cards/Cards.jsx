@@ -94,12 +94,12 @@ export default function Card({
 
   const handleEdit = async () => {
     setEditCard(!editCard)
-    mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`)
+    mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/indexCars`)
   }
   const handleLike = async () => {
     try {
       const { status } = await axios.patch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/cars/indexCars`,
         {
           _id: id,
           carName: name,
@@ -113,7 +113,7 @@ export default function Card({
         }
       )
       if (status === 201) {
-        mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`)
+        mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/indexCars`)
       }
     } catch (err) {
       console.error(err)
@@ -123,12 +123,12 @@ export default function Card({
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/addnewcar`, {
+      const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/indexCars`, {
         data: {
           id
         }
       })
-      if (response.status === 200) mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`)
+      if (response.status === 200) mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/indexCars`)
       console.log(response.status)
     } catch (err) {
       console.error(err)

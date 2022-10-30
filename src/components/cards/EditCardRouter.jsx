@@ -105,7 +105,7 @@ export default function EditCardRouter({
   }) => {
     try {
       const { status } = await axios.patch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/cars/carfilter`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/cars/indexCars`,
         {
           _id: id,
           carModel,
