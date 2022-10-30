@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import IconImages from '../iconImage/IconImages'
 
 const StyledButtonSave = styled.button`
   background-color: ${(props) => props.theme.buttonColor};
@@ -58,11 +59,7 @@ const StyledButtonSave = styled.button`
 const ButtonSave = ({ children, loading, disabled, ...props }) => {
   return (
     <StyledButtonSave disabled={disabled || loading} {...props}>
-      {loading && (
-        <>
-          <p>{children}</p>
-        </>
-      )}
+      {loading && <IconImages imageName="loading" type="svg" size="25px" />}
       {!loading && children}
     </StyledButtonSave>
   )

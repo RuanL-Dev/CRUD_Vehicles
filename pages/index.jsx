@@ -4,10 +4,10 @@ import axios from 'axios'
 import useSWR from 'swr'
 import styled from 'styled-components'
 
-import ContainerPage from '../src/components/layout/container/ContainerPage'
-import SearchInput from '../src/components/search/SearchInput'
-import Body from '../src/components/layout/body/Body'
+import ContainerPage from '../src/components/layout/ContainerPage'
 import ButtonAdd from '../src/components/button/ButtonAdd'
+import SearchInput from '../src/components/search/SearchInput'
+import Body from '../src/components/layout/Body'
 import Cards from '../src/components/cards/Cards'
 
 const SecondaryContainer = styled.div`
@@ -70,10 +70,12 @@ const fetcher = (url) => axios.get(url).then((res) => res.data)
 
 function HomePage() {
   const [car, setCar] = useState('')
+  const [loading, setLoading] = useState(false)
   const { data } = useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/indexCars`, fetcher)
 
   const router = useRouter()
   const handleClick = () => {
+    setLoading(true)
     router.push('/newcar')
   }
 
@@ -105,7 +107,7 @@ function HomePage() {
             placeholder="buscar"
             onChange={(event) => setCar(event.target.value.toUpperCase())}
           />
-          <ButtonAdd type="submit" onClick={handleClick}>
+          <ButtonAdd loading={loading} type="submit" onClick={handleClick}>
             ADICIONAR
           </ButtonAdd>
           <SecondaryContainer>

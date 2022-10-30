@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 import axios from 'axios'
@@ -84,6 +85,7 @@ export default function EditCardRouter({
   plate,
   onSave
 }) {
+  const [loading, setLoading] = useState(false)
   const {
     control,
     handleSubmit,
@@ -104,6 +106,7 @@ export default function EditCardRouter({
     carYear
   }) => {
     try {
+      setLoading(true)
       const { status } = await axios.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/cars/indexCars`,
         {
@@ -123,6 +126,8 @@ export default function EditCardRouter({
     } catch (err) {
       console.error(err)
       throw err
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -181,7 +186,9 @@ export default function EditCardRouter({
               defaultValue={price}
             />
             <ContainerButtonSave>
-              <ButtonSave type="submit">SALVAR</ButtonSave>
+              <ButtonSave loading={loading} type="submit">
+                SALVAR
+              </ButtonSave>
             </ContainerButtonSave>
           </Form>
         </FormContainer>

@@ -62,9 +62,9 @@ const transformColor = (color) => {
     vermelho: 'rgb(199, 0, 0)',
     vermelha: 'rgb(199, 0, 0)',
     rosa: 'rgb(255, 100, 255)',
-    verde: 'rgb(0, 180, 0)',
+    verde: 'rgb(000 139 000)',
     prata: 'silver',
-    azul: 'rgb(20, 100, 255)',
+    azul: 'rgb(000 000 205)',
     preto: 'rgb(0, 0, 0, 0.80)',
     preta: 'rgb(0, 0, 0, 0.80)',
     amarelo: 'rgb(215, 220, 128)',
@@ -128,7 +128,6 @@ export default function Card({
         }
       })
       if (response.status === 200) mutate(`${process.env.NEXT_PUBLIC_API_URL}/api/cars/indexCars`)
-      console.log(response.status)
     } catch (err) {
       console.error(err)
     }

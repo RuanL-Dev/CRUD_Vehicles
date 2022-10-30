@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
@@ -6,8 +7,8 @@ import axios from 'axios'
 import styled from 'styled-components'
 import { newcarSchema } from '../modules/cars/car.schema'
 
-import Body from '../src/components/layout/body/Body'
-import ContainerPage from '../src/components/layout/container/ContainerPage'
+import Body from '../src/components/layout/Body'
+import ContainerPage from '../src/components/layout/ContainerPage'
 import Input from '../src/components/input/Input'
 import ButtonSave from '../src/components/button/ButtonSave'
 import IconImages from '../src/components/iconImage/IconImages'
@@ -97,6 +98,7 @@ const Form = styled.form`
 
 export default function NewCar() {
   const router = useRouter()
+  const [loading, setLoading] = useState(false)
   const {
     control,
     handleSubmit,
@@ -108,6 +110,7 @@ export default function NewCar() {
 
   const handleForm = async (data) => {
     try {
+      setLoading(true)
       const { status } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/cars/indexCars`,
         data
@@ -118,6 +121,8 @@ export default function NewCar() {
     } catch (err) {
       console.error(err)
       throw err
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -176,7 +181,11 @@ export default function NewCar() {
                 control={control}
               />
               <ContainerButtonSave>
-                <ButtonSave type="submit" disabled={Object.keys(errors).length > 0 || !isValid}>
+                <ButtonSave
+                  type="submit"
+                  loading={loading}
+                  disabled={Object.keys(errors).length > 0 || !isValid}
+                >
                   SALVAR
                 </ButtonSave>
               </ContainerButtonSave>

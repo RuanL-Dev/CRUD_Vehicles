@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import IconImages from '../iconImage/IconImages'
 
 const StyledButtonAdd = styled.button`
   background-color: ${(props) => props.theme.buttonColor};
@@ -48,6 +49,9 @@ const StyledButtonAdd = styled.button`
   :hover:after {
     transform: scaleX(1);
   }
+  :disabled {
+    background-color: ${(props) => props.theme.disabled};
+  }
   @media (max-width: 400px) {
     width: 250px;
     padding: 12px 50px;
@@ -55,14 +59,10 @@ const StyledButtonAdd = styled.button`
   }
 `
 
-const ButtonAdd = ({ children, loading, disabled, ...props }) => {
+const ButtonAdd = ({ children, loading, ...props }) => {
   return (
-    <StyledButtonAdd disabled={disabled || loading} {...props}>
-      {loading && (
-        <>
-          <p>{children}</p>
-        </>
-      )}
+    <StyledButtonAdd disabled={loading} {...props}>
+      {loading && <IconImages imageName="loading" type="svg" size="25px" />}
       {!loading && children}
     </StyledButtonAdd>
   )
