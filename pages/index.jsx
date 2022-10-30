@@ -80,13 +80,19 @@ function HomePage() {
   const search = (data) => {
     return data?.filter(
       (post) =>
-        post.carModel?.includes(car) ||
+        post.carModel?.toUpperCase().includes(car) ||
         post.carBrand?.toLowerCase().includes(car) ||
+        post.carBrand?.toUpperCase().includes(car) ||
         post.carColor?.toLowerCase().includes(car) ||
+        post.carColor?.toUpperCase().includes(car) ||
         post.carYear?.toLowerCase().includes(car) ||
+        post.carYear?.toUpperCase().includes(car) ||
         post.carPlate?.toLowerCase().includes(car) ||
+        post.carPlate?.toUpperCase().includes(car) ||
         post.carPrice?.toLowerCase().includes(car) ||
-        post.carDescription?.toLowerCase().includes(car)
+        post.carPrice?.toUpperCase().includes(car) ||
+        post.carDescription?.toLowerCase().includes(car) ||
+        post.carDescription?.toUpperCase().includes(car)
     )
   }
   return (
@@ -97,7 +103,7 @@ function HomePage() {
             type="text"
             name="search"
             placeholder="buscar"
-            onChange={(event) => setCar(event.target.value)}
+            onChange={(event) => setCar(event.target.value.toUpperCase())}
           />
           <ButtonAdd type="submit" onClick={handleClick}>
             ADICIONAR

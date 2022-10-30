@@ -1,8 +1,8 @@
-import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import { joiResolver } from '@hookform/resolvers/joi'
 import axios from 'axios'
 
+import styled from 'styled-components'
 import { editCarSchema } from '../../../modules/cars/car.schema'
 
 import Input from '../input/Input'

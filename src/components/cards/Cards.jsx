@@ -1,14 +1,13 @@
 import { useState } from 'react'
-import axios from 'axios'
 import { useSWRConfig } from 'swr'
+import axios from 'axios'
 
 import styled from 'styled-components'
+import EditCardRouter from './EditCardRouter'
 
 import { GoTrashcan } from 'react-icons/go'
 import { FaRegEdit } from 'react-icons/fa'
 import { BsBookmarkHeart } from 'react-icons/bs'
-
-import EditCardRouter from './EditCardRouter'
 
 const CardContainer = styled.div`
   background-color: ${(props) => props.color};

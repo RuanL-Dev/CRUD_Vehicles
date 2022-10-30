@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import useSWR from 'swr'
 import { useRouter } from 'next/router'
+import useSWR from 'swr'
 import axios from 'axios'
 import styled from 'styled-components'
 
@@ -144,11 +144,19 @@ export default function FilterCar() {
   const filtering = (data) => {
     return data?.filter(
       (post) =>
-        post.carModel?.includes(car) ||
+        post.carModel?.toUpperCase().includes(car) ||
         post.carBrand?.toLowerCase().includes(car) ||
+        post.carBrand?.toUpperCase().includes(car) ||
         post.carColor?.toLowerCase().includes(car) ||
+        post.carColor?.toUpperCase().includes(car) ||
         post.carYear?.toLowerCase().includes(car) ||
-        post.carPrice?.toLowerCase().includes(car)
+        post.carYear?.toUpperCase().includes(car) ||
+        post.carPlate?.toLowerCase().includes(car) ||
+        post.carPlate?.toUpperCase().includes(car) ||
+        post.carPrice?.toLowerCase().includes(car) ||
+        post.carPrice?.toUpperCase().includes(car) ||
+        post.carDescription?.toLowerCase().includes(car) ||
+        post.carDescription?.toUpperCase().includes(car)
     )
   }
   const handleClick = () => {
@@ -166,28 +174,28 @@ export default function FilterCar() {
               <FilterInput
                 label="Marca."
                 placeholder="Digite a marca do carro"
-                onChange={(event) => setCar(event.target.value)}
+                onChange={(event) => setCar(event.target.value.toUpperCase())}
               />
               <FilterInput
                 label="Cor"
                 placeholder="Digite a cor do carro"
-                onChange={(event) => setCar(event.target.value)}
+                onChange={(event) => setCar(event.target.value.toUpperCase())}
               />
               <FilterInput
                 label="Ano"
                 placeholder="Digite o ano no formato (YYYY)"
-                onChange={(event) => setCar(event.target.value)}
+                onChange={(event) => setCar(event.target.value.toUpperCase())}
               />
               <PriceForm>
                 <FilterInput
                   label="Preço mín."
                   placeholder="(R$)"
-                  onChange={(event) => setCar(event.target.value)}
+                  onChange={(event) => setCar(event.target.value.toUpperCase())}
                 />
                 <FilterInput
                   label="Preço máx."
                   placeholder="(R$)"
-                  onChange={(event) => setCar(event.target.value)}
+                  onChange={(event) => setCar(event.target.value.toUpperCase())}
                 />
               </PriceForm>
             </Form>
