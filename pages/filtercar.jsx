@@ -141,27 +141,27 @@ export default function FilterCar() {
   const router = useRouter()
   const [car, setCar] = useState('')
 
+  const carIncludes = (data) => {
+    return data.toUpperCase().includes(car.toUpperCase())
+  }
+
   const filtering = (data) => {
     return data?.filter(
       (post) =>
-        post.carModel?.toUpperCase().includes(car) ||
-        post.carBrand?.toLowerCase().includes(car) ||
-        post.carBrand?.toUpperCase().includes(car) ||
-        post.carColor?.toLowerCase().includes(car) ||
-        post.carColor?.toUpperCase().includes(car) ||
-        post.carYear?.toLowerCase().includes(car) ||
-        post.carYear?.toUpperCase().includes(car) ||
-        post.carPlate?.toLowerCase().includes(car) ||
-        post.carPlate?.toUpperCase().includes(car) ||
-        post.carPrice?.toLowerCase().includes(car) ||
-        post.carPrice?.toUpperCase().includes(car) ||
-        post.carDescription?.toLowerCase().includes(car) ||
-        post.carDescription?.toUpperCase().includes(car)
+        carIncludes(post.carModel) ||
+        carIncludes(post.carBrand) ||
+        carIncludes(post.carColor) ||
+        carIncludes(post.carYear) ||
+        carIncludes(post.carPlate) ||
+        carIncludes(post.carPrice) ||
+        carIncludes(post.carDescription)
     )
   }
+
   const handleClick = () => {
     router.push('/')
   }
+
   return (
     <>
       <Body>
@@ -174,28 +174,28 @@ export default function FilterCar() {
               <FilterInput
                 label="Marca."
                 placeholder="Digite a marca do carro"
-                onChange={(event) => setCar(event.target.value.toUpperCase())}
+                onChange={(event) => setCar(event.target.value)}
               />
               <FilterInput
                 label="Cor"
                 placeholder="Digite a cor do carro"
-                onChange={(event) => setCar(event.target.value.toUpperCase())}
+                onChange={(event) => setCar(event.target.value)}
               />
               <FilterInput
                 label="Ano"
                 placeholder="Digite o ano no formato (YYYY)"
-                onChange={(event) => setCar(event.target.value.toUpperCase())}
+                onChange={(event) => setCar(event.target.value)}
               />
               <PriceForm>
                 <FilterInput
                   label="Preço mín."
                   placeholder="(R$)"
-                  onChange={(event) => setCar(event.target.value.toUpperCase())}
+                  onChange={(event) => setCar(event.target.value)}
                 />
                 <FilterInput
                   label="Preço máx."
                   placeholder="(R$)"
-                  onChange={(event) => setCar(event.target.value.toUpperCase())}
+                  onChange={(event) => setCar(event.target.value)}
                 />
               </PriceForm>
             </Form>
